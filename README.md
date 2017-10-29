@@ -13,7 +13,7 @@
 @POST(Const.VERIFY)
 Observable<User.UserWrapper> verify(@Field("stuNum") String stuNum, @Field("idNum") String idNum);
 ```
-![](/pic/json.png)
+![](/pic/json.PNG)
 ![](/pic/first.gif)
 ```
 android {
