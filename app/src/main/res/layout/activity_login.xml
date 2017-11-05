@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="cn.edu.cqupt.campussocialmotion.LoginActivity"
+    tools:context="cn.edu.cqupt.campussocialmotion.Activity.LoginActivity"
     android:background="@drawable/login_background3">
 
     <LinearLayout

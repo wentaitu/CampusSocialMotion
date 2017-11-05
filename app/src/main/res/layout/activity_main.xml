@@ -3,6 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipChildren="false">
+    <cn.edu.cqupt.campussocialmotion.View.TitleLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </cn.edu.cqupt.campussocialmotion.View.TitleLayout>
 
     <FrameLayout
         android:id="@+id/index"

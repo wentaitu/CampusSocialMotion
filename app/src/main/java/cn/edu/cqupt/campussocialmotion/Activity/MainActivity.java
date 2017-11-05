@@ -1,17 +1,22 @@
-package cn.edu.cqupt.campussocialmotion;
+package cn.edu.cqupt.campussocialmotion.Activity;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.edu.cqupt.campussocialmotion.R;
 import cn.edu.cqupt.campussocialmotion.fragment.FoundFragment;
+import cn.edu.cqupt.campussocialmotion.fragment.SettingFragment;
+import cn.edu.cqupt.campussocialmotion.model.RedrockApiWrapper;
+import cn.edu.cqupt.campussocialmotion.model.User;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -25,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public ImageView nav_me;
     @BindView(R.id.add)
     public ImageView nav_add;
+    RedrockApiWrapper<User> userinfo;
+    public String mString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +46,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         nav_me.setOnClickListener(this);
         nav_add.setOnClickListener(this);
 
-        replaceFragment(new FoundFragment());
+        userinfo = (RedrockApiWrapper<User>) getIntent().getSerializableExtra("Userinfo");
+        Toast.makeText(this,userinfo.data.toString(), Toast.LENGTH_SHORT).show();
+
+        //replaceFragment(new FoundFragment());
 
     }
 
@@ -51,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 Toast.makeText(MainActivity.this, "发现", Toast.LENGTH_SHORT).show();
                 nav_found.setImageResource(R.drawable.found_fill);
+                replaceFragment(new FoundFragment());
                 break;
             case R.id.exercise :
 
@@ -61,11 +72,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 Toast.makeText(MainActivity.this, "圈子", Toast.LENGTH_SHORT).show();
                 nav_circle.setImageResource(R.drawable.circle_fill);
+                Intent intent = new Intent(MainActivity.this, TrendActivity.class);
+                startActivity(intent);
+                //finish();
                 break;
             case R.id.me :
 
                 Toast.makeText(MainActivity.this, "我的", Toast.LENGTH_SHORT).show();
                 nav_me.setImageResource(R.drawable.me_fill);
+
+                SettingFragment settingFragment = new SettingFragment();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("Userinfo",userinfo);
+                settingFragment.setArguments(bundle);
+                replaceFragment(settingFragment);
+
+
                 break;
             case R.id.add :
 
