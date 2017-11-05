@@ -11,4 +11,7 @@
     <string name="nav_add">发布</string>
     <string name="nav_cir">圈子</string>
     <string name="nav_me">我</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
