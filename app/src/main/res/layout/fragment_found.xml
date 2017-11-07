@@ -5,10 +5,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ImageView
+    <com.oragee.banners.BannerView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@drawable/test"/>
+        android:layout_height="220dp"
+        android:id="@+id/banner"/>
+
+    <Button
+        android:id="@+id/test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/input_id"/>
 
     <LinearLayout
         android:layout_width="match_parent"

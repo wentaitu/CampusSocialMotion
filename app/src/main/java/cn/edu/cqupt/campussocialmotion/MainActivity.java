@@ -1,5 +1,6 @@
 package cn.edu.cqupt.campussocialmotion;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.edu.cqupt.campussocialmotion.fragment.FoundFragment;
+import cn.edu.cqupt.campussocialmotion.model.User;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public ImageView nav_me;
     @BindView(R.id.add)
     public ImageView nav_add;
+    private User.UserWrapper userInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         replaceFragment(new FoundFragment());
 
+
     }
 
     @Override
@@ -48,27 +52,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         resetBottomBar();
         switch (view.getId()) {
             case R.id.found :
-
                 Toast.makeText(MainActivity.this, "发现", Toast.LENGTH_SHORT).show();
                 nav_found.setImageResource(R.drawable.found_fill);
                 break;
-            case R.id.exercise :
 
+            case R.id.exercise :
                 Toast.makeText(MainActivity.this, "运动", Toast.LENGTH_SHORT).show();
                 nav_exercise.setImageResource(R.drawable.exercise_fill);
                 break;
-            case R.id.circle :
 
+            case R.id.circle :
                 Toast.makeText(MainActivity.this, "圈子", Toast.LENGTH_SHORT).show();
                 nav_circle.setImageResource(R.drawable.circle_fill);
                 break;
+
             case R.id.me :
 
                 Toast.makeText(MainActivity.this, "我的", Toast.LENGTH_SHORT).show();
                 nav_me.setImageResource(R.drawable.me_fill);
                 break;
-            case R.id.add :
 
+            case R.id.add :
+                startActivity(new Intent(MainActivity.this, PutSportMsgActivity.class));
                 Toast.makeText(MainActivity.this, "发布", Toast.LENGTH_SHORT).show();
                 break;
         }

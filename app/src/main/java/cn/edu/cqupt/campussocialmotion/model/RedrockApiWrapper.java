@@ -1,6 +1,8 @@
 package cn.edu.cqupt.campussocialmotion.model;
 
-public class RedrockApiWrapper<T> {
+import java.io.Serializable;
+
+public class RedrockApiWrapper<T> implements Serializable{
 
     public int status;
     public String info;

@@ -62,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                                 if (userWrapper.info.equals("success")) {
                                     Toast.makeText(LoginActivity.this, getResources().getString(R.string.login_succ), Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    intent.putExtra("userInfo", userWrapper);
                                     startActivity(intent);
                                     finish();
                                 } else {
