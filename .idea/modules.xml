@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CampusSocialMotion.iml" filepath="$PROJECT_DIR$/CampusSocialMotion.iml" />
+      <module fileurl="file://C:\androidPlan\SocialMotion-master\CampusSocialMotion.iml" filepath="C:\androidPlan\SocialMotion-master\CampusSocialMotion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SocialMotion-master.iml" filepath="$PROJECT_DIR$/SocialMotion-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

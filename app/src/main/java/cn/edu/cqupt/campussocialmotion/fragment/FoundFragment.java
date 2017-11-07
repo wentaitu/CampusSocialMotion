@@ -27,8 +27,7 @@ public class FoundFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_found, container, false);
-        button = view.findViewById(R.id.test);
-        banner = view.findViewById(R.id.banner);
+
         return view;
     }
 
@@ -37,13 +36,13 @@ public class FoundFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), TestActivity.class);
-                startActivity(intent);
-            }
-        });
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getActivity(), TestActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
     }
 }

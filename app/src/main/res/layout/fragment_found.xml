@@ -4,17 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
-    <com.oragee.banners.BannerView
+    <cn.edu.cqupt.campussocialmotion.View.TitleLayout
         android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:id="@+id/banner"/>
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/test"
+    </cn.edu.cqupt.campussocialmotion.View.TitleLayout>
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/input_id"/>
+        android:layout_height="200dp"
+        android:background="@drawable/test"/>
 
     <LinearLayout
         android:layout_width="match_parent"
