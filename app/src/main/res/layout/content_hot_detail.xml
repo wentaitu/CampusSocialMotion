@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/fragment_hot_detail"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_above="@+id/inputLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginEnd="13dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/avatar"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_account_circle_white_48dp"
+                android:layout_gravity="center_vertical"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/general_margin"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="youjoin"
+                    android:id="@+id/username"
+                    android:textColor="@color/name_font_black"
+                    android:textSize="12sp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:id="@+id/time"
+                    android:textColor="@color/time_font_black"
+                    android:textSize="10sp"
+                    tools:text="12:12"/>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/content"
+            tools:text="contentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentc"
+            android:textSize="13sp"
+            android:textColor="@color/content_font_black"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="10dp"/>
+
+        <me.zq.youjoin.widget.enter.AutoHeightGridView
+            android:id="@+id/gridView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:columnWidth="100dp"
+            android:gravity="center"
+            android:numColumns="3"
+            android:verticalSpacing="6dp"
+            android:horizontalSpacing="6dp"
+            android:stretchMode="columnWidth"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="13dp">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+
+            <CheckBox
+                android:id="@+id/btnLike"
+                android:layout_width="@dimen/tweets_list_item_button_size"
+                android:layout_height="@dimen/tweets_list_item_button_size"
+                android:button="@null"
+                android:background="@drawable/checkbox_upvote"
+                android:checked="true"/>
+            <!--android:background="@drawable/btn_feed_action"-->
+
+            <TextSwitcher
+                android:id="@+id/tsLikesCounter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center">
+                <!--android:inAnimation="@anim/slide_in_likes_counter"
+                                    android:outAnimation="@anim/slide_out_likes_counter"-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/like_count"
+                    android:textSize="10sp"
+                    android:layout_gravity="center_vertical"
+                    tools:text="13"
+                    android:textColor="@color/grey"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/grey" />
+            </TextSwitcher>
+
+            <ImageButton
+                android:id="@+id/btnComments"
+                android:layout_width="@dimen/tweets_list_item_button_size"
+                android:layout_height="@dimen/tweets_list_item_button_size"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/ic_comment_black"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/comment_count"
+                tools:text="23"
+                android:textSize="10sp"
+                android:textColor="@color/grey"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="5dp"/>
+
+        </LinearLayout>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:id="@+id/comments_list"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="1dp"/>
+
+    </LinearLayout>
+
+    <include layout="@layout/bottom_input_layout"
+             android:id="@+id/inputLayout"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_alignParentBottom="true"
+             android:layout_marginBottom="24dp"/>
+</RelativeLayout>
