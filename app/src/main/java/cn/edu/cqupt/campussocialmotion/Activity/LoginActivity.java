@@ -1,4 +1,4 @@
-package cn.edu.cqupt.campussocialmotion;
+package cn.edu.cqupt.campussocialmotion.Activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import cn.edu.cqupt.campussocialmotion.Activity.MainActivity;
+import cn.edu.cqupt.campussocialmotion.R;
 import cn.edu.cqupt.campussocialmotion.model.User;
 import cn.edu.cqupt.campussocialmotion.net.LoginRetrofit;
 import io.reactivex.Observer;

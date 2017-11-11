@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".LoginActivity"
+            android:name=".Activity.LoginActivity"
             android:theme="@style/FullTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,7 @@
         </activity>
         <activity android:name=".Activity.MainActivity" />
         <activity android:name=".found.TestActivity" />
-        <activity android:name=".PutSportMsgActivity"/>
+        <activity android:name=".Activity.PutSportMsgActivity"/>
         <activity android:name=".fragment.ProfileActivity"/>
         <activity android:name=".Activity.TrendActivity">
         </activity>

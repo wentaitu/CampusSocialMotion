@@ -4,12 +4,6 @@
     android:layout_height="match_parent"
     android:clipChildren="false">
 
-    <cn.edu.cqupt.campussocialmotion.View.TitleLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </cn.edu.cqupt.campussocialmotion.View.TitleLayout>
-
     <FrameLayout
         android:id="@+id/index"
         android:layout_width="match_parent"
@@ -33,7 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:src="@drawable/found_fill" />
+                android:src="@drawable/found" />
 
             <TextView
                 android:padding="2dp"
