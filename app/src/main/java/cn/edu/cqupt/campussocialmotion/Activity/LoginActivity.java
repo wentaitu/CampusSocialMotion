@@ -2,6 +2,7 @@ package cn.edu.cqupt.campussocialmotion.Activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -32,6 +33,15 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        //异常
+//        Drawable drawable=getResources().getDrawable(R.drawable.login1_1);
+//        drawable.setBounds(0,0,40,40);
+//        loginId.setCompoundDrawables(null,null,drawable,null);
+//        Drawable drawable2=getResources().getDrawable(R.drawable.login2_1);
+//        drawable.setBounds(0,0,40,40);
+//        loginId.setCompoundDrawables(null,null,drawable,null);
+
 
         ButterKnife.bind(this);
         User.UserWrapper userWrapper =new User.UserWrapper();

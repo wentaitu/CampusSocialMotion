@@ -3,19 +3,17 @@ package cn.edu.cqupt.campussocialmotion.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.StringBuilderPrinter;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import java.util.Observable;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.edu.cqupt.campussocialmotion.R;
 import cn.edu.cqupt.campussocialmotion.model.SportPostMsg;
-import cn.edu.cqupt.campussocialmotion.net.GetSportMsgRetrofit;
 import cn.edu.cqupt.campussocialmotion.net.PostSportMsgRetrofit;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -41,20 +39,44 @@ public class PutSportMsgActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        final String activityName = "打羽毛球";
-        final int stuNum = 2016214073;
-        final String activityIntro = "一起嗨皮";
-        final String activityRemarks = "带上必备品";
-        final long initTime = System.currentTimeMillis();
-        final long startTime = System.currentTimeMillis() + 9000;
-        final long endTime = System.currentTimeMillis() + 1800;
-        final String activityLocation = "风雨操场";
-        final String needsPeople = "17";
-        final String isRace = "active";
+//        final String activityName = name.getText().toString();
+//        final int stuNum = Integer.valueOf(getIntent().getStringExtra("stuId"));
+//        final String activityIntro = intro.getText().toString();
+//        final String activityRemarks = remarks.getText().toString();
+//        final long initTime = System.currentTimeMillis();
+//        final long startTime = System.currentTimeMillis() + 6000000;
+//        final long endTime = System.currentTimeMillis() + 12000000;
+//        final String activityLocation = location.getText().toString();
+//        final int needsPeople = Integer.parseInt(needs.getText().toString());
+//        final String isRace = "active";
+
+        //final String activityName = "來一场网球";
+//        final int stuNum = 2016214703;
+        //final String activityIntro = "一起嗨皮吧";
+        //final String activityRemarks = "每人都带上篮球";
+//        final long initTime = System.currentTimeMillis();
+//        final long startTime = System.currentTimeMillis() + 6000000;
+//        final long endTime = System.currentTimeMillis() + 12000000;
+        //final String activityLocation = "灯光篮球场";
+       // final String needsPeople = "7";
+//        final String isRace = "active";
+
 
         uploadMsg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                final String activityName = name.getText().toString();
+                final int stuNum = Integer.valueOf(getIntent().getStringExtra("stuId"));
+                final String activityIntro = intro.getText().toString();
+                final String activityRemarks = remarks.getText().toString();
+                final long initTime = System.currentTimeMillis();
+                final long startTime = System.currentTimeMillis() + 6000000;
+                final long endTime = System.currentTimeMillis() + 12000000;
+                final String activityLocation = location.getText().toString();
+                final int needsPeople = Integer.parseInt(needs.getText().toString());
+                final String isRace = "active";
+
                 PostSportMsgRetrofit.getsInstance().postActivityService()
                         .getPostSportMsg(activityName, stuNum, activityIntro, activityRemarks,
                                 initTime, startTime, endTime, activityLocation, needsPeople, isRace)

@@ -99,7 +99,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.add :
-                startActivity(new Intent(MainActivity.this, PutSportMsgActivity.class));
+                String stuId = userinfo.getData().getStuNum();
+                Intent intent1 = new Intent(MainActivity.this, PutSportMsgActivity.class);
+                intent1.putExtra("stuId", stuId);
+                startActivity(intent1);
                 Toast.makeText(MainActivity.this, "发布", Toast.LENGTH_SHORT).show();
                 break;
         }

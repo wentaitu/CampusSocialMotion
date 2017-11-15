@@ -22,7 +22,7 @@ public interface ActivityGetService {
     @POST(Const.POST_ACTIVITY)
     Observable<SportPostMsg> getPostSportMsg(@Field("activityName") String active, @Field("initiator") int stuNUm, @Field("content")String intro,
                                          @Field("remarks")String remarks, @Field("initTime")long initTime, @Field("startTime")long startTime,
-                                         @Field("endTime")long endTime, @Field("location")String location, @Field("peopleNeeds")String needs,
+                                         @Field("endTime")long endTime, @Field("location")String location, @Field("peopleNeeds")int needs,
                                          @Field("activityOrRace")String activeOrRace);
 
 }

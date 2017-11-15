@@ -37,7 +37,7 @@ public class FoundFragment extends Fragment {
     private int[] imgs = {R.drawable.banner1,R.drawable.banner2,R.drawable.banner1,R.drawable.banner2};
     private List<View> viewList;
     RecyclerView popActivitys;
-    RecyclerView popCOmpetition;
+    RecyclerView popCompetition;
 
     SearchFragment searchFragment = SearchFragment.newInstance();
 
@@ -51,7 +51,7 @@ public class FoundFragment extends Fragment {
 
         banner = view.findViewById(R.id.banner);
         popActivitys = view.findViewById(R.id.pop_activity);
-        popCOmpetition = view.findViewById(R.id.pop_competition);
+        popCompetition = view.findViewById(R.id.pop_competition);
         searchShow = view.findViewById(R.id.search_show);
         searchShow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,10 +108,12 @@ public class FoundFragment extends Fragment {
         popActivitys.setLayoutManager(linearLayoutManager);
         int[] imgs = {R.drawable.pop_activity1, R.drawable.pop_activity2, R.drawable.pop_activity3, R.drawable.pop_activity1, R.drawable.pop_activity2, R.drawable.pop_activity3, R.drawable.pop_activity1, R.drawable.pop_activity2, R.drawable.pop_activity3, R.drawable.pop_activity1, R.drawable.pop_activity2, R.drawable.pop_activity3, R.drawable.pop_activity1, R.drawable.pop_activity2, R.drawable.pop_activity3};
         popActivitys.setAdapter(new PopActivityRecyclerAdapter(imgs));
+        popActivitys.setNestedScrollingEnabled(false);
 
-        popCOmpetition.setLayoutManager(new LinearLayoutManager(getActivity()));
+        popCompetition.setLayoutManager(new LinearLayoutManager(getActivity()));
         int[] imgs2 = {R.drawable.pop_competition, R.drawable.pop_activity1, R.drawable.pop_activity2, R.drawable.pop_activity3, R.drawable.pop_competition, R.drawable.pop_competition, R.drawable.pop_activity1, R.drawable.pop_activity2, R.drawable.pop_activity3, R.drawable.pop_competition};
-        popCOmpetition.setAdapter(new PopCompetitionRecyclerAdapter(imgs2));
+        popCompetition.setAdapter(new PopCompetitionRecyclerAdapter(imgs2));
+        popCompetition.setNestedScrollingEnabled(false);
 
     }
 }
