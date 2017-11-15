@@ -17,15 +17,14 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".Activity.MainActivity" />
-        <activity android:name=".found.TestActivity" />
-        <activity android:name=".Activity.PutSportMsgActivity"/>
-        <activity android:name=".fragment.ProfileActivity"/>
-        <activity android:name=".Activity.TrendActivity">
-        </activity>
+        <activity android:name=".Activity.PutSportMsgActivity" />
+        <activity android:name=".fragment.ProfileActivity" />
+        <activity android:name=".Activity.TrendActivity"></activity>
+        <activity android:name=".Activity.ShowActivity"></activity>
     </application>
 
 </manifest>

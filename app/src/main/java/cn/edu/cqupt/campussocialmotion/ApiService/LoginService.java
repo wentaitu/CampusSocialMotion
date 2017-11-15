@@ -21,7 +21,4 @@ public interface LoginService {
     @POST(Const.VERIFY)
     Observable<User.UserWrapper> verify(@Field("stuNum") String stuNum, @Field("idNum") String idNum);
 
-    @GET(Const.GET_ACTIVITY)
-    Observable<SportMsg> getSportMsg();
-
 }

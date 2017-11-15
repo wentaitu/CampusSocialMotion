@@ -11,34 +11,34 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by wentai on 17-10-28.
  */
 
-public class GetSportMsgRetrofit {
+public class PostSportMsgRetrofit {
 
-    private volatile static GetSportMsgRetrofit sInstance;
+    private volatile static PostSportMsgRetrofit sInstance;
     private Retrofit retrofit;
-    private ActivityGetService activityService;
+    private ActivityGetService activityGetService;
 
-    public GetSportMsgRetrofit() {
+    public PostSportMsgRetrofit() {
         retrofit = new Retrofit.Builder()
                 .baseUrl(Const.BASE_GET_ACTIVITY)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
-        activityService = retrofit.create(ActivityGetService.class);
+        activityGetService = retrofit.create(ActivityGetService.class);
     }
 
-    public static GetSportMsgRetrofit getsInstance() {
+    public static PostSportMsgRetrofit getsInstance() {
         if (sInstance == null) {
-            synchronized (GetSportMsgRetrofit.class) {
+            synchronized (PostSportMsgRetrofit.class) {
                 if (sInstance == null) {
-                    sInstance = new GetSportMsgRetrofit();
+                    sInstance = new PostSportMsgRetrofit();
                 }
             }
         }
         return sInstance;
     }
 
-    public ActivityGetService getActivityService() {
-        return activityService;
+    public ActivityGetService postActivityService() {
+        return activityGetService;
     }
 
 }

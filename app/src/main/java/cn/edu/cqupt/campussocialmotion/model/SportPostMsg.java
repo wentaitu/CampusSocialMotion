@@ -1,23 +1,20 @@
 package cn.edu.cqupt.campussocialmotion.model;
 
-import java.util.List;
-
 /**
- * Created by wentai on 17-11-5.
+ * Created by wentai on 17-11-11.
  */
 
-public class SportMsg {
-
+public class SportPostMsg {
 
     /**
      * code : 200
      * message : OK#成功返回
-     * body : [{"activityId":1,"activityName":"大扫除","initiator":"2015210098","content":"要大扫除啦","remarks":"暂无","initTime":0,"startTime":20150203121212,"endTime":20161111111111,"location":"老操场","peopleNeeds":12,"peopleHave":2,"activityPic":"/pic/23.jpg","activityOrRace":"active","clickNumber":0},{"activityId":42,"activityName":"测试","initiator":"2015210105","content":"你好","remarks":"暂无","initTime":989787223,"startTime":998672836,"endTime":1520888888888,"location":"中心食堂","peopleNeeds":20,"peopleHave":0,"activityPic":null,"activityOrRace":"active","clickNumber":0}]
+     * body : {"activityId":12,"activeName":"测试5","initiator":2015210088,"content":"你好","remarks":"暂无","initTime":989787467,"startTime":998672836,"endTime":999872387,"location":"中心食堂","peopleNeeds":20,"peopleHave":0,"activityPic":null,"activityOrRace":"active","clickNumber":0}
      */
 
     private int code;
     private String message;
-    private List<BodyBean> body;
+    private BodyBean body;
 
     public int getCode() {
         return code;
@@ -35,56 +32,35 @@ public class SportMsg {
         this.message = message;
     }
 
-    public List<BodyBean> getBody() {
+    public BodyBean getBody() {
         return body;
     }
 
-    public void setBody(List<BodyBean> body) {
+    public void setBody(BodyBean body) {
         this.body = body;
     }
 
     public static class BodyBean {
-
-        @Override
-        public String toString() {
-            return "BodyBean{" +
-                    "activityId=" + activityId +
-                    ", activityName='" + activityName + '\'' +
-                    ", initiator='" + initiator + '\'' +
-                    ", content='" + content + '\'' +
-                    ", remarks='" + remarks + '\'' +
-                    ", initTime=" + initTime +
-                    ", startTime=" + startTime +
-                    ", endTime=" + endTime +
-                    ", location='" + location + '\'' +
-                    ", peopleNeeds=" + peopleNeeds +
-                    ", peopleHave=" + peopleHave +
-                    ", activityPic='" + activityPic + '\'' +
-                    ", activityOrRace='" + activityOrRace + '\'' +
-                    ", clickNumber=" + clickNumber +
-                    '}';
-        }
-
         /**
-         * activityId : 1
-         * activityName : 大扫除
-         * initiator : 2015210098
-         * content : 要大扫除啦
+         * activityId : 12
+         * activeName : 测试5
+         * initiator : 2015210088
+         * content : 你好
          * remarks : 暂无
-         * initTime : 0
-         * startTime : 20150203121212
-         * endTime : 20161111111111
-         * location : 老操场
-         * peopleNeeds : 12
-         * peopleHave : 2
-         * activityPic : /pic/23.jpg
+         * initTime : 989787467
+         * startTime : 998672836
+         * endTime : 999872387
+         * location : 中心食堂
+         * peopleNeeds : 20
+         * peopleHave : 0
+         * activityPic : null
          * activityOrRace : active
          * clickNumber : 0
          */
 
         private int activityId;
-        private String activityName;
-        private String initiator;
+        private String activeName;
+        private int initiator;
         private String content;
         private String remarks;
         private long initTime;
@@ -93,7 +69,7 @@ public class SportMsg {
         private String location;
         private int peopleNeeds;
         private int peopleHave;
-        private String activityPic;
+        private Object activityPic;
         private String activityOrRace;
         private int clickNumber;
 
@@ -105,19 +81,19 @@ public class SportMsg {
             this.activityId = activityId;
         }
 
-        public String getActivityName() {
-            return activityName;
+        public String getActiveName() {
+            return activeName;
         }
 
-        public void setActivityName(String activityName) {
-            this.activityName = activityName;
+        public void setActiveName(String activeName) {
+            this.activeName = activeName;
         }
 
-        public String getInitiator() {
+        public int getInitiator() {
             return initiator;
         }
 
-        public void setInitiator(String initiator) {
+        public void setInitiator(int initiator) {
             this.initiator = initiator;
         }
 
@@ -149,7 +125,7 @@ public class SportMsg {
             return startTime;
         }
 
-        public void setStartTime(long startTime) {
+        public void setStartTime(int startTime) {
             this.startTime = startTime;
         }
 
@@ -157,7 +133,7 @@ public class SportMsg {
             return endTime;
         }
 
-        public void setEndTime(long endTime) {
+        public void setEndTime(int endTime) {
             this.endTime = endTime;
         }
 
@@ -185,11 +161,11 @@ public class SportMsg {
             this.peopleHave = peopleHave;
         }
 
-        public String getActivityPic() {
+        public Object getActivityPic() {
             return activityPic;
         }
 
-        public void setActivityPic(String activityPic) {
+        public void setActivityPic(Object activityPic) {
             this.activityPic = activityPic;
         }
 

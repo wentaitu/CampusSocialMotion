@@ -30,6 +30,7 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
+                    android:id="@+id/search_show"
                     android:layout_width="0dp"
                     android:layout_height="35dp"
                     android:layout_weight="1"
@@ -95,6 +96,7 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/show_activitys"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:src="@drawable/index_icon1"/>
@@ -114,6 +116,7 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/show_competitions"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:src="@drawable/index_icon2"/>
@@ -133,6 +136,7 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/show_teams"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:src="@drawable/index_icon3"/>
@@ -152,6 +156,7 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/show_playgrounds"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp"
                         android:src="@drawable/index_icon4"/>

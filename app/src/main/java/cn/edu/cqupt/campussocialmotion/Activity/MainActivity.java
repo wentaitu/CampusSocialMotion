@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         userinfo = (RedrockApiWrapper<User>) getIntent().getSerializableExtra("Userinfo");
 
         replaceFragment(new FoundFragment());
+        nav_found.setImageResource(R.drawable.found_fill);
     }
 
     @Override
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.found :
 
                 Toast.makeText(MainActivity.this, "发现", Toast.LENGTH_SHORT).show();
-                nav_found.setImageResource(R.drawable.found);
+                nav_found.setImageResource(R.drawable.found_fill);
                 replaceFragment(new FoundFragment());
                 break;
 
@@ -105,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void resetBottomBar() {
-        nav_found.setImageResource(R.drawable.found_fill);
+        nav_found.setImageResource(R.drawable.found);
         nav_exercise.setImageResource(R.drawable.exercise);
         nav_circle.setImageResource(R.drawable.circle);
         nav_me.setImageResource(R.drawable.me);

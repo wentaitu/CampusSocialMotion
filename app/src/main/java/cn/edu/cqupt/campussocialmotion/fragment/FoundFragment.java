@@ -11,16 +11,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.oragee.banners.BannerView;
+import com.wyt.searchbox.SearchFragment;
+import com.wyt.searchbox.custom.IOnSearchClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.edu.cqupt.campussocialmotion.Activity.ShowActivity;
 import cn.edu.cqupt.campussocialmotion.R;
 import cn.edu.cqupt.campussocialmotion.adapter.PopActivityRecyclerAdapter;
 import cn.edu.cqupt.campussocialmotion.adapter.PopCompetitionRecyclerAdapter;
-import cn.edu.cqupt.campussocialmotion.found.TestActivity;
 
 /**
  * Created by wentai on 17-10-30.
@@ -28,12 +31,18 @@ import cn.edu.cqupt.campussocialmotion.found.TestActivity;
 
 public class FoundFragment extends Fragment {
 
+    private TextView searchShow;
     private Button button;
     private BannerView banner;  // 最顶上轮播
     private int[] imgs = {R.drawable.banner1,R.drawable.banner2,R.drawable.banner1,R.drawable.banner2};
     private List<View> viewList;
     RecyclerView popActivitys;
     RecyclerView popCOmpetition;
+
+    SearchFragment searchFragment = SearchFragment.newInstance();
+
+    private ImageView showActivitys;
+
 
     @Nullable
     @Override
@@ -43,6 +52,29 @@ public class FoundFragment extends Fragment {
         banner = view.findViewById(R.id.banner);
         popActivitys = view.findViewById(R.id.pop_activity);
         popCOmpetition = view.findViewById(R.id.pop_competition);
+        searchShow = view.findViewById(R.id.search_show);
+        searchShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                searchFragment.setOnSearchClickListener(new IOnSearchClickListener() {
+                    @Override
+                    public void OnSearchClick(String keyword) {
+                        //这里处理逻辑
+
+                    }
+                });
+                searchFragment.show(getActivity().getSupportFragmentManager(),SearchFragment.TAG);
+            }
+        });
+
+        showActivitys = view.findViewById(R.id.show_activitys);
+        showActivitys.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), ShowActivity.class));
+            }
+        });
+
         return view;
     }
 

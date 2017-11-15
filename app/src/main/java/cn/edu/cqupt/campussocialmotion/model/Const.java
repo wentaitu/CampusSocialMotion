@@ -10,6 +10,6 @@ public interface Const {
     public static final String VERIFY = "api/verify";
 
     public static final String BASE_GET_ACTIVITY = "http://106.14.188.228:8081/sports-dating/";
-    public static final String  GET_ACTIVITY = "activity/getActivities";    // 获取活动信息
-
+    public static final String GET_ACTIVITY = "activity/getActivities";    // 获取活动信息
+    public static final String POST_ACTIVITY = "activity/estabActivity";   // 上传活动信息
 }
