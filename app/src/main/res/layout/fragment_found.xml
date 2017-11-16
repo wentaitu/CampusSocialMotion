@@ -1,56 +1,225 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <cn.edu.cqupt.campussocialmotion.View.TitleLayout
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    </cn.edu.cqupt.campussocialmotion.View.TitleLayout>
-    <ImageView
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_scrollFlags="scroll|enterAlways">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@drawable/index_title_back"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:background="@drawable/index_title_back">
+
+                <View
+                    android:layout_width="15dp"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/search_show"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical"
+                    android:drawablePadding="5dp"
+                    android:paddingLeft="10dp"
+                    android:drawableLeft="@drawable/ic_search_white_24dp"
+
+                    android:hint="搜索活动  赛事  运动团  运动场所"
+                    android:textColorHint="#f2f2f2"
+                    android:background="@drawable/search_back"/>
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/title_menu"/>
+
+                <View
+                    android:layout_width="12dp"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@drawable/test"/>
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"/>
+            <com.oragee.banners.BannerView
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="180dp" />
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"/>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="6dp" />
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"/>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-    </LinearLayout>
+                    <ImageView
+                        android:id="@+id/show_activitys"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:src="@drawable/index_icon1"/>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="150dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:text="活动"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="热门赛事"/>
+                </LinearLayout>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="150dp" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-</LinearLayout>
+                    <ImageView
+                        android:id="@+id/show_competitions"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:src="@drawable/index_icon2"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:text="赛事"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/show_teams"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:src="@drawable/index_icon3"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:text="运动团"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/show_playgrounds"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:src="@drawable/index_icon4"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:text="运动场"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="6dp"
+                android:background="#F4F4F4"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="热门活动"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/pop_activity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="6dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="热门赛事"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/pop_competition"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

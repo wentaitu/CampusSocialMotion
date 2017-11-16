@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/fragment_hot_detail"
     android:clipToPadding="true"
     android:fitsSystemWindows="true"

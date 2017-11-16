@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:orientation="vertical">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/relativeLayout">
+
+    <ImageView
+        android:id="@+id/tou"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="9dp"
+        app:srcCompat="@drawable/tou"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="9dp"
+        android:layout_toEndOf="@+id/tou"
+        android:text="诺亚"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/textView2"
+        android:text="发布动态"
+        android:textSize="12dp"/>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tou"
+        android:layout_alignStart="@+id/textView2"
+        android:textSize="12dp"
+        android:text="一周一次的网球训练，刚刚好，有别于去年的瞎打"/>
+
+</RelativeLayout>
+
+    <ImageView
+        android:id="@+id/pic"
+        android:layout_width="200dp"
+        android:layout_height="130dp"
+        android:layout_alignBottom="@+id/comment"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="65dp"
+        android:layout_marginEnd="29dp"
+        android:layout_toStartOf="@+id/comment"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/banner2"/>
+
+    <ImageView
+        android:id="@+id/good1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="9dp"
+        android:layout_marginEnd="10dp"
+        android:onClick="onClick1"
+        app:srcCompat="@drawable/good1"/>
+
+    <ImageView
+        android:id="@+id/comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/good1"
+        android:layout_marginEnd="9dp"
+        android:layout_toStartOf="@+id/good1"
+        app:srcCompat="@drawable/commend"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:background="#ccc"/>
+</RelativeLayout>
+
+
+
+
+
+</LinearLayout>

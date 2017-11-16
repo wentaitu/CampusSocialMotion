@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="48dp"
     android:layout_alignParentTop="true"
-    android:background="#6F44CC"
-    style="@style/AppTheme">
+    android:background="@drawable/index_title_back"
+    style="@style/AppTheme.NoActionBar">
 
     <ImageView
         android:id="@+id/iv_back"

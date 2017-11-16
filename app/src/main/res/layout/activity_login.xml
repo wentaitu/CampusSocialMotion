@@ -6,33 +6,44 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="cn.edu.cqupt.campussocialmotion.Activity.LoginActivity"
-    android:background="@drawable/login_background3">
+    android:background="@drawable/login_back5">
 
     <LinearLayout
+        android:paddingTop="60dp"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#80000000"
+        android:background="#50000000"
         android:orientation="vertical">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="80dp"/>
+        <ImageView
+
+            android:id="@+id/imageView"
+            android:layout_above="@+id/login_id"
+            android:layout_alignStart="@+id/login_pwd"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/login_icon"/>
 
         <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center"/>
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:src="@drawable/login_icon_2"/>
 
         <EditText
             android:id="@+id/login_id"
-            android:layout_width="300dp"
+            android:layout_width="240dp"
             android:layout_height="60dp"
+            android:layout_above="@+id/login_pwd"
+            android:layout_alignStart="@+id/imageView"
             android:layout_gravity="center"
-            android:inputType="numberSigned"
-            android:drawableLeft="@drawable/ic_people_outline_deep_purple_600_24dp"
+            android:drawableLeft="@drawable/login1"
             android:drawablePadding="8dp"
             android:hint="@string/input_id"
-            android:textSize="16sp"/>
+            android:inputType="numberSigned"
+            android:textSize="20sp"/>
 
         <View
             android:layout_width="match_parent"
@@ -40,28 +51,34 @@
 
         <EditText
             android:id="@+id/login_pwd"
-            android:layout_width="300dp"
+            android:layout_width="240dp"
             android:layout_height="60dp"
+            android:layout_above="@+id/login_btn"
+            android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:inputType="numberPassword"
-            android:hint="@string/input_pwd"
-            android:drawableLeft="@drawable/ic_lock_outline_deep_purple_600_24dp"
+            android:layout_marginBottom="12dp"
+            android:drawableLeft="@drawable/login2"
             android:drawablePadding="8dp"
-            android:textSize="16sp"/>
+            android:hint="@string/input_pwd"
+            android:inputType="numberPassword"
+            android:textSize="20sp"/>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="8dp"/>
+            android:layout_height="12dp"/>
 
         <Button
             android:id="@+id/login_btn"
             android:layout_width="250dp"
             android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
             android:layout_gravity="center"
+            android:layout_marginBottom="115dp"
             android:background="@drawable/login_normal"
+            android:text="@string/app_login"
             android:textColor="#FFFFFF"
-            android:textSize="25sp"
-            android:text="@string/app_login" />
+            android:textSize="25sp"/>
 
     </LinearLayout>
 

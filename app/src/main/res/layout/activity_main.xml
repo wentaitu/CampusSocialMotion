@@ -3,11 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipChildren="false">
-    <cn.edu.cqupt.campussocialmotion.View.TitleLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </cn.edu.cqupt.campussocialmotion.View.TitleLayout>
 
     <FrameLayout
         android:id="@+id/index"
@@ -27,12 +22,14 @@
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
             android:layout_weight="1">
+
             <ImageView
                 android:id="@+id/found"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:src="@drawable/found_fill" />
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/textView5"
+                android:src="@drawable/found"/>
 
             <TextView
                 android:padding="2dp"
@@ -41,7 +38,8 @@
                 android:text="@string/nav_found"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/found"/>
+                android:layout_below="@+id/found"
+                android:id="@+id/textView5"/>
 
         </RelativeLayout>
 
@@ -50,12 +48,14 @@
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
             android:layout_weight="1">
+
             <ImageView
                 android:id="@+id/exercise"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:src="@drawable/exercise" />
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/exercise"/>
             <TextView
                 android:padding="2dp"
                 android:textSize="10sp"
@@ -68,24 +68,24 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_width="100dp"
-            android:layout_height="95dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
             android:layout_gravity="bottom">
 
             <ImageView
                 android:id="@+id/add"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_centerInParent="true"
                 android:src="@drawable/add" />
-            <TextView
-                android:padding="2dp"
-                android:textSize="10sp"
-                android:layout_centerInParent="true"
-                android:text="@string/nav_add"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/add"/>
+            <!--<TextView-->
+                <!--android:padding="2dp"-->
+                <!--android:textSize="10sp"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:text="@string/nav_add"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/add"/>-->
 
         </RelativeLayout>
 
@@ -94,12 +94,14 @@
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
             android:layout_weight="1">
+
             <ImageView
                 android:id="@+id/circle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:src="@drawable/circle" />
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/textView"
+                android:src="@drawable/circle"/>
             <TextView
                 android:padding="2dp"
                 android:textSize="10sp"
@@ -107,7 +109,8 @@
                 android:text="@string/nav_cir"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/circle"/>
+                android:layout_below="@+id/circle"
+                android:id="@+id/textView"/>
 
         </RelativeLayout>
 
@@ -116,12 +119,14 @@
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
             android:layout_weight="1">
+
             <ImageView
                 android:id="@+id/me"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:src="@drawable/me" />
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/me"/>
             <TextView
                 android:padding="2dp"
                 android:textSize="10sp"

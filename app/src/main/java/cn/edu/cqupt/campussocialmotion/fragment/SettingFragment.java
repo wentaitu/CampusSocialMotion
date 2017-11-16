@@ -40,6 +40,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener{
             xsid.setText(userinfo.getData().stuNum);
 
         }
+
         getView().findViewById(R.id.re_myinfo).setOnClickListener(this);
 
     }

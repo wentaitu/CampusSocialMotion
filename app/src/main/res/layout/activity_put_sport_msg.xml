@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="cn.edu.cqupt.campussocialmotion.Activity.PutSportMsgActivity">
+
+    <EditText
+        android:id="@+id/activity_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="活动名称" />
+
+    <EditText
+        android:id="@+id/activity_intro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="活动介绍" />
+
+    <EditText
+        android:id="@+id/remarks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="备注" />
+
+    <EditText
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="活动地点" />
+
+    <EditText
+        android:id="@+id/people_needs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="需要人数"
+        android:ems="10"/>
+
+    <RadioButton
+        android:id="@+id/choose_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"
+        android:layout_marginTop="8dp"
+        android:text="活动" />
+
+    <RadioButton
+        android:id="@+id/choose_competition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="比赛" />
+
+    <Button
+        android:id="@+id/upload_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="发布"/>
+
+</LinearLayout>

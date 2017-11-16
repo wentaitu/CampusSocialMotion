@@ -20,6 +20,8 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_profile_info);
         RedrockApiWrapper<User> userinfo = (RedrockApiWrapper<User>) getIntent().getSerializableExtra("Userinfo");
+        //SharedPreferences pref = getSharedPreferences("User",MODE_PRIVATE);
+
         name=(TextView) findViewById(R.id.tv_name);
         xsid=(TextView) findViewById(R.id.tv_xsid);
         sex=(TextView) findViewById(R.id.tv_sex);
