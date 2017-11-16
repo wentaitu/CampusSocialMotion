@@ -5,6 +5,7 @@ import android.content.Intent;
 
 import android.content.SharedPreferences;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -101,20 +102,15 @@ public class LoginActivity extends AppCompatActivity {
                                         Toast.makeText(LoginActivity.this, getResources().getString(R.string.login_fail), Toast.LENGTH_SHORT).show();
                                     }
                                 }
-
+                              
+                                @Override
+                                public void onComplete() {}
+                              
                                 @Override
                                 public void onError(Throwable e) {
                                     Toast.makeText(LoginActivity.this, "Error!", Toast.LENGTH_LONG).show();
                                     progressDialog.dismiss();
                                 }
-
-                                @Override
-                                public void onComplete() {
-
-                                }
-                            });
-
-
 
             }
         });

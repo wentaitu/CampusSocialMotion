@@ -10,14 +10,12 @@
 
     <LinearLayout
         android:paddingTop="60dp"
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#50000000"
         android:orientation="vertical">
 
         <ImageView
-
             android:id="@+id/imageView"
             android:layout_above="@+id/login_id"
             android:layout_alignStart="@+id/login_pwd"
