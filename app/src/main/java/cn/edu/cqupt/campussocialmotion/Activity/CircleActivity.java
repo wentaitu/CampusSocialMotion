@@ -52,6 +52,7 @@ public class CircleActivity extends AppCompatActivity {
         });
 
     }
+
 /*
     private void initView() {
         mViewPager = (ViewPager) findViewById(R.id.viewpager);

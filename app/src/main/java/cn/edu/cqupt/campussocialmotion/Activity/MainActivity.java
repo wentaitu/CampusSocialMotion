@@ -1,6 +1,7 @@
 package cn.edu.cqupt.campussocialmotion.Activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -49,6 +50,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
 
+        //SharedPreferences pref = getSharedPreferences("User",MODE_PRIVATE);
+        //String pwd = pref.getString("pwd", "null");
+        //Toast.makeText(this,pwd, Toast.LENGTH_SHORT).show();
+
         ButterKnife.bind(this);
 
         nav_found.setOnClickListener(this);
@@ -82,6 +87,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.circle :
                 Toast.makeText(MainActivity.this, "圈子", Toast.LENGTH_SHORT).show();
                 nav_circle.setImageResource(R.drawable.circle_fill);
+                TrendActivity trendActivity = new TrendActivity();
+                replaceFragment(trendActivity);
                 Intent intent = new Intent(MainActivity.this, TrendActivity.class);
                 startActivity(intent);
                 break;

@@ -22,12 +22,16 @@
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
             android:layout_weight="1">
+
             <ImageView
                 android:id="@+id/found"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:src="@drawable/found" />
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/textView5"
+                android:src="@drawable/found"/>
+                android:layout_centerInParent="true"/>
+
 
             <TextView
                 android:padding="2dp"
@@ -36,7 +40,8 @@
                 android:text="@string/nav_found"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/found"/>
+                android:layout_below="@+id/found"
+                android:id="@+id/textView5"/>
 
         </RelativeLayout>
 
@@ -45,12 +50,14 @@
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
             android:layout_weight="1">
+
             <ImageView
                 android:id="@+id/exercise"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:src="@drawable/exercise" />
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/exercise"/>
             <TextView
                 android:padding="2dp"
                 android:textSize="10sp"
@@ -89,12 +96,14 @@
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
             android:layout_weight="1">
+
             <ImageView
                 android:id="@+id/circle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:src="@drawable/circle" />
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/textView"
+                android:src="@drawable/circle"/>
             <TextView
                 android:padding="2dp"
                 android:textSize="10sp"
@@ -102,7 +111,8 @@
                 android:text="@string/nav_cir"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/circle"/>
+                android:layout_below="@+id/circle"
+                android:id="@+id/textView"/>
 
         </RelativeLayout>
 
@@ -111,12 +121,14 @@
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
             android:layout_weight="1">
+
             <ImageView
                 android:id="@+id/me"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:src="@drawable/me" />
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/me"/>
             <TextView
                 android:padding="2dp"
                 android:textSize="10sp"

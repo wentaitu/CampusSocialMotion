@@ -2,6 +2,9 @@ package cn.edu.cqupt.campussocialmotion.Activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+
+import android.content.SharedPreferences;
+
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     public EditText loginPwd;
     @BindView(R.id.login_btn)
     public Button loginBtn;
+    public int temp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +48,15 @@ public class LoginActivity extends AppCompatActivity {
 
 
         ButterKnife.bind(this);
-        User.UserWrapper userWrapper =new User.UserWrapper();
+        final User.UserWrapper userWrapper =new User.UserWrapper();
+
+        SharedPreferences pref = getSharedPreferences("User",MODE_PRIVATE);
+        String status = pref.getString("status", "null");
+        /*if(status.equals("success")){
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }*/
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,42 +67,51 @@ public class LoginActivity extends AppCompatActivity {
 
                 String id = loginId.getText().toString();
                 String pwd = loginPwd.getText().toString();
+                //String status =null;
 
-                LoginRetrofit.getsInstance().getLoginService()
-                        .verify(id, pwd)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new Observer<User.UserWrapper>() {
-                            @Override
-                            public void onSubscribe(Disposable d) {
 
-                            }
 
-                            @Override
-                            public void onNext(User.UserWrapper userWrapper) {
-                                progressDialog.dismiss();
-                                if (userWrapper.info.equals("success")) {
-                                    Toast.makeText(LoginActivity.this, getResources().getString(R.string.login_succ), Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                    intent.putExtra("Userinfo", userWrapper);
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-                                    Toast.makeText(LoginActivity.this, getResources().getString(R.string.login_fail), Toast.LENGTH_SHORT).show();
+                    LoginRetrofit.getsInstance().getLoginService()
+                            .verify(id, pwd)
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(new Observer<User.UserWrapper>() {
+                                @Override
+                                public void onSubscribe(Disposable d) {
+
                                 }
-                            }
 
-                            @Override
-                            public void onError(Throwable e) {
-                                Toast.makeText(LoginActivity.this, "Error!", Toast.LENGTH_LONG).show();
-                                progressDialog.dismiss();
-                            }
+                                @Override
+                                public void onNext(User.UserWrapper userWrapper) {
+                                    progressDialog.dismiss();
+                                    if (userWrapper.info.equals("success")) {
+                                        Toast.makeText(LoginActivity.this, getResources().getString(R.string.login_succ), Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                        intent.putExtra("Userinfo", userWrapper);
 
-                            @Override
-                            public void onComplete() {
+                                        SharedPreferences.Editor editor = getSharedPreferences("User", MODE_PRIVATE).edit();
+                                        editor.putString("status", userWrapper.info);
+                                        editor.putString("stuNum",loginId.getText().toString());
+                                        editor.putString("pwd",loginPwd.getText().toString());
+                                        editor.putString("college",userWrapper.getData().college);
+                                        editor.putString("gender",userWrapper.getData().gender);
+                                        editor.apply();
+                                        startActivity(intent);
+                                        finish();
+                                    } else {
+                                        Toast.makeText(LoginActivity.this, getResources().getString(R.string.login_fail), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                              
+                                @Override
+                                public void onComplete() {}
+                              
+                                @Override
+                                public void onError(Throwable e) {
+                                    Toast.makeText(LoginActivity.this, "Error!", Toast.LENGTH_LONG).show();
+                                    progressDialog.dismiss();
+                                }
 
-                            }
-                        });
             }
         });
 

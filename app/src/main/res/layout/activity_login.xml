@@ -16,6 +16,9 @@
         android:orientation="vertical">
 
         <ImageView
+            android:id="@+id/imageView"
+            android:layout_above="@+id/login_id"
+            android:layout_alignStart="@+id/login_pwd"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
@@ -29,13 +32,15 @@
 
         <EditText
             android:id="@+id/login_id"
-            android:layout_width="300dp"
+            android:layout_width="240dp"
             android:layout_height="60dp"
+            android:layout_above="@+id/login_pwd"
+            android:layout_alignStart="@+id/imageView"
             android:layout_gravity="center"
-            android:inputType="numberSigned"
             android:drawableLeft="@drawable/login1"
             android:drawablePadding="8dp"
             android:hint="@string/input_id"
+            android:inputType="numberSigned"
             android:textSize="20sp"/>
 
         <View
@@ -44,13 +49,16 @@
 
         <EditText
             android:id="@+id/login_pwd"
-            android:layout_width="300dp"
+            android:layout_width="240dp"
             android:layout_height="60dp"
+            android:layout_above="@+id/login_btn"
+            android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:inputType="numberPassword"
-            android:hint="@string/input_pwd"
+            android:layout_marginBottom="12dp"
             android:drawableLeft="@drawable/login2"
             android:drawablePadding="8dp"
+            android:hint="@string/input_pwd"
+            android:inputType="numberPassword"
             android:textSize="20sp"/>
 
         <View
@@ -61,11 +69,14 @@
             android:id="@+id/login_btn"
             android:layout_width="250dp"
             android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
             android:layout_gravity="center"
+            android:layout_marginBottom="115dp"
             android:background="@drawable/login_normal"
+            android:text="@string/app_login"
             android:textColor="#FFFFFF"
-            android:textSize="25sp"
-            android:text="@string/app_login" />
+            android:textSize="25sp"/>
 
     </LinearLayout>
 
