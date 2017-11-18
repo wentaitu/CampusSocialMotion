@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.oragee.banners.BannerView;
+import com.wyt.searchbox.SearchFragment;
+import com.wyt.searchbox.custom.IOnSearchClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +39,7 @@ public class FoundFragment extends Fragment {
     RecyclerView popActivitys;
     RecyclerView popCompetition;
 
-//    SearchFragment searchFragment = SearchFragment.newInstance();
+    SearchFragment searchFragment = SearchFragment.newInstance();
 
     private ImageView showActivitys;
 
@@ -54,14 +56,14 @@ public class FoundFragment extends Fragment {
         searchShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                searchFragment.setOnSearchClickListener(new IOnSearchClickListener() {
-//                    @Override
-//                    public void OnSearchClick(String keyword) {
-//                        //这里处理逻辑
-//
-//                    }
-//                });
-//                searchFragment.show(getActivity().getSupportFragmentManager(),SearchFragment.TAG);
+                searchFragment.setOnSearchClickListener(new IOnSearchClickListener() {
+                    @Override
+                    public void OnSearchClick(String keyword) {
+                        //这里处理逻辑
+
+                    }
+                });
+                searchFragment.show(getActivity().getSupportFragmentManager(),SearchFragment.TAG);
             }
         });
 

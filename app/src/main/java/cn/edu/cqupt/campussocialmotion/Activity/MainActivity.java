@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
 
+
         //Toast.makeText(this,pwd, Toast.LENGTH_SHORT).show();
 
         ButterKnife.bind(this);
@@ -94,6 +95,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 nav_circle.setImageResource(R.drawable.circle_fill);
                 TrendActivity trendActivity = new TrendActivity();
                 replaceFragment(trendActivity);
+                Intent intent = new Intent(MainActivity.this, TrendActivity.class);
+                startActivity(intent);
                 break;
 
             case R.id.me :

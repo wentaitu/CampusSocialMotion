@@ -73,10 +73,10 @@ public class TrendActivity extends Fragment implements View.OnClickListener{
                 hotFragment = new HotFragment();
                 replaceFragment(hotFragment);
                 break;
-
             case R.id.message_layout:
                 messageFragment = new MessageFragment();
                 replaceFragment(messageFragment);
+
                 break;
 
             case R.id.sendmood:

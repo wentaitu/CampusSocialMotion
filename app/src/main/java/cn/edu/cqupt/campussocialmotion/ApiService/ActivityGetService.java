@@ -24,7 +24,5 @@ public interface ActivityGetService {
                                          @Field("remarks")String remarks, @Field("initTime")long initTime, @Field("startTime")long startTime,
                                          @Field("endTime")long endTime, @Field("location")String location, @Field("peopleNeeds")int needs,
                                          @Field("activityOrRace")String activeOrRace);
-
-
-
+  
 }
