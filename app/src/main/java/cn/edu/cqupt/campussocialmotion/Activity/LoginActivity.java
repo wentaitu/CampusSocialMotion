@@ -55,13 +55,13 @@ public class LoginActivity extends AppCompatActivity {
 
         SharedPreferences pref = getSharedPreferences("User",MODE_PRIVATE);
         temp = pref.getInt("temp", 0);
-
+/*
         if(temp==1){
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 
             startActivity(intent);
             finish();
-        }
+        }*/
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
