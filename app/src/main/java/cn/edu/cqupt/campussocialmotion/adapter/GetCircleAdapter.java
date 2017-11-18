@@ -4,13 +4,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
 
 import cn.edu.cqupt.campussocialmotion.R;
-import cn.edu.cqupt.campussocialmotion.model.Contact;
+import cn.edu.cqupt.campussocialmotion.model.GetCircle;
 
 /**
  * @author Administrator
@@ -20,13 +19,12 @@ import cn.edu.cqupt.campussocialmotion.model.Contact;
  * @updateDes ${TODO}
  */
 
-public class MsgRecyclerAdaper extends RecyclerView.Adapter<MsgRecyclerAdaper.ViewHolder> {
+public class GetCircleAdapter extends RecyclerView.Adapter<GetCircleAdapter.ViewHolder> {
 
-    private List<Contact> mContacts;
+    private List<GetCircle.BodyBean> activits;
 
-
-    public MsgRecyclerAdaper(List<Contact> contacts) {
-        this.mContacts = contacts;
+    public GetCircleAdapter(List<GetCircle.BodyBean> activitys) {
+        this.activits = activitys;
     }
 
     @Override
@@ -38,32 +36,28 @@ public class MsgRecyclerAdaper extends RecyclerView.Adapter<MsgRecyclerAdaper.Vi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        //holder.activity.setImageResource(activitys[position]);
-       // holder.activity.
-        Contact man = mContacts.get(position);
-        holder.name.setText(man.getName());
-        holder.msg.setText(man.getMsg());
+        holder.name.setText(activits.get(position).getId());
+        holder.msg.setText(activits.get(position).getContent());
     }
 
     @Override
     public int getItemCount() {
-        return mContacts.size();
-
+        return activits.size();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView tou;
         TextView name;
         TextView msg;
 
+
         public ViewHolder(View itemView) {
             super(itemView);
-            //activity = itemView.findViewById(R.id.pic);
-            name = (TextView) itemView.findViewById(R.id.name);
-            msg = itemView.findViewById(R.id.msg);
 
+            name = itemView.findViewById(R.id.name);
+            msg = itemView.findViewById(R.id.msg);
 
         }
     }
+
 }
