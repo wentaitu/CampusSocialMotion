@@ -65,6 +65,7 @@
         </RelativeLayout>
 
         <ImageView
+            android:id="@+id/sendmood"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:background="@drawable/ad"/>

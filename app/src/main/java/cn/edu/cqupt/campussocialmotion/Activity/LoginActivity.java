@@ -2,10 +2,11 @@ package cn.edu.cqupt.campussocialmotion.Activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-
 import android.content.SharedPreferences;
 
-import android.graphics.drawable.Drawable;
+
+//import android.graphics.drawable.Drawable;
+
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -17,7 +18,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.edu.cqupt.campussocialmotion.R;
 import cn.edu.cqupt.campussocialmotion.model.User;
+import cn.edu.cqupt.campussocialmotion.model.UserPost;
 import cn.edu.cqupt.campussocialmotion.net.LoginRetrofit;
+import cn.edu.cqupt.campussocialmotion.net.LoginRetrofit2;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -51,9 +54,11 @@ public class LoginActivity extends AppCompatActivity {
         final User.UserWrapper userWrapper =new User.UserWrapper();
 
         SharedPreferences pref = getSharedPreferences("User",MODE_PRIVATE);
-        String status = pref.getString("status", "null");
-        /*if(status.equals("success")){
+        temp = pref.getInt("temp", 0);
+/*
+        if(temp==1){
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+
             startActivity(intent);
             finish();
         }*/
@@ -70,8 +75,8 @@ public class LoginActivity extends AppCompatActivity {
                 //String status =null;
 
 
-
-                    LoginRetrofit.getsInstance().getLoginService()
+                if(temp==0) {
+                   LoginRetrofit.getsInstance().getLoginService()
                             .verify(id, pwd)
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
@@ -90,11 +95,12 @@ public class LoginActivity extends AppCompatActivity {
                                         intent.putExtra("Userinfo", userWrapper);
 
                                         SharedPreferences.Editor editor = getSharedPreferences("User", MODE_PRIVATE).edit();
-                                        editor.putString("status", userWrapper.info);
-                                        editor.putString("stuNum",loginId.getText().toString());
-                                        editor.putString("pwd",loginPwd.getText().toString());
-                                        editor.putString("college",userWrapper.getData().college);
-                                        editor.putString("gender",userWrapper.getData().gender);
+                                        editor.putInt("temp", 1);
+                                        editor.putString("stuNum", userWrapper.getData().stuNum);
+                                        editor.putString("pwd", loginPwd.getText().toString());
+                                        editor.putString("name", userWrapper.getData().name);
+                                        editor.putString("college", userWrapper.getData().college);
+                                        editor.putString("gender", userWrapper.getData().gender);
                                         editor.apply();
                                         startActivity(intent);
                                         finish();
@@ -111,6 +117,49 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.makeText(LoginActivity.this, "Error!", Toast.LENGTH_LONG).show();
                                     progressDialog.dismiss();
                                 }
+
+
+                                @Override
+                                public void onComplete() {
+
+                                }
+                            });
+                }else {
+                    LoginRetrofit2.getsInstance2().getLoginService2()
+                            .verify(id, pwd)
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(new Observer<UserPost>() {
+                                @Override
+                                public void onSubscribe(Disposable d) {
+
+                                }
+
+                                @Override
+                                public void onNext(UserPost userPost) {
+
+                                    Toast.makeText(LoginActivity.this, "hhhh", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    SharedPreferences.Editor editor = getSharedPreferences("User", MODE_PRIVATE).edit();
+
+                                    startActivity(intent);
+
+                                }
+
+                                @Override
+                                public void onError(Throwable e) {
+                                    Toast.makeText(LoginActivity.this, "Error!", Toast.LENGTH_LONG).show();
+                                    progressDialog.dismiss();
+                                }
+
+                                @Override
+                                public void onComplete() {
+
+                                }
+                            });
+
+                }
+
 
             }
         });

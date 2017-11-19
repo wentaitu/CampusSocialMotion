@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -20,6 +21,12 @@ import cn.edu.cqupt.campussocialmotion.fragment.FoundFragment;
 import cn.edu.cqupt.campussocialmotion.fragment.SettingFragment;
 import cn.edu.cqupt.campussocialmotion.model.RedrockApiWrapper;
 import cn.edu.cqupt.campussocialmotion.model.User;
+import cn.edu.cqupt.campussocialmotion.model.UserPost;
+import cn.edu.cqupt.campussocialmotion.net.PostUserInfoRetrofit;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -48,10 +55,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             decorView.setSystemUiVisibility(option);
             getWindow().setNavigationBarColor(Color.TRANSPARENT);
             getWindow().setStatusBarColor(Color.TRANSPARENT);
+
         }
 
-        //SharedPreferences pref = getSharedPreferences("User",MODE_PRIVATE);
-        //String pwd = pref.getString("pwd", "null");
+
         //Toast.makeText(this,pwd, Toast.LENGTH_SHORT).show();
 
         ButterKnife.bind(this);
@@ -63,7 +70,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         nav_add.setOnClickListener(this);
 
         userinfo = (RedrockApiWrapper<User>) getIntent().getSerializableExtra("Userinfo");
-
         replaceFragment(new FoundFragment());
         nav_found.setImageResource(R.drawable.found_fill);
     }
@@ -98,11 +104,64 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(MainActivity.this, "我的", Toast.LENGTH_SHORT).show();
                 nav_me.setImageResource(R.drawable.me_fill);
 
+                SharedPreferences pref = getSharedPreferences("User",MODE_PRIVATE);
+
+                final String id= pref.getString("stuNum","null");//2016210395
+                final String userName = pref.getString("name","null");
+                final String gender = pref.getString("gender","null");
+                final String password = pref.getString("pwd", "null");;
+                final int ability =1;
+
                 SettingFragment settingFragment = new SettingFragment();
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("Userinfo",userinfo);
+                bundle.putString("stuNum",id);
+                bundle.putString("name",userName);
                 settingFragment.setArguments(bundle);
                 replaceFragment(settingFragment);
+
+
+
+                PostUserInfoRetrofit.getsInstance().postUserInfoService()
+                        .getPostUserInfo(id, userName, gender, password, ability)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Observer<UserPost>() {
+                            @Override
+                            public void onSubscribe(Disposable d) {
+
+                            }
+
+                            @Override
+                            public void onNext(UserPost userInfo) {
+                                Toast.makeText(MainActivity.this, userInfo.getMessage(), Toast.LENGTH_LONG).show();
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+                                Toast.makeText(MainActivity.this,"ERROR!!!", Toast.LENGTH_SHORT).show();
+                                Log.d("ERROR", "ERROR");
+                                e.printStackTrace();
+                            }
+
+                            @Override
+                            public void onComplete() {
+
+                            }
+                        });
+
+
+
+
+
+
+
+
+
+
+
+
+
                 break;
 
             case R.id.add :

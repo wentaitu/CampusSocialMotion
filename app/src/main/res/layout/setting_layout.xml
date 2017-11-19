@@ -233,12 +233,13 @@
                     android:src="@drawable/setting_icon" />
 
                 <TextView
+                    android:id="@+id/out"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="20dp"
                     android:layout_toRightOf="@+id/iv_setting5"
-                    android:text="11111111"
+                    android:text="退出登录"
                     android:textColor="#353535"
                     android:textSize="16sp" />
             </RelativeLayout>

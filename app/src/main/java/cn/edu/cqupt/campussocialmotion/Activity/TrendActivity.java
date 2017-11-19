@@ -1,5 +1,6 @@
 package cn.edu.cqupt.campussocialmotion.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -29,6 +30,7 @@ public class TrendActivity extends Fragment implements View.OnClickListener{
 
     private TextView hotText;
     private ImageView good;
+    private ImageView sendmood;
 
     private FragmentManager fragmentManager;
     //@Override
@@ -56,6 +58,8 @@ public class TrendActivity extends Fragment implements View.OnClickListener{
         messageText = (TextView) getView().findViewById(R.id.message_text);
         hotText = (TextView) getView().findViewById(R.id.contacts_text);
 
+        sendmood = getView().findViewById(R.id.sendmood);
+        sendmood.setOnClickListener(this);
         message.setOnClickListener(this);
         hot.setOnClickListener(this);
 
@@ -74,6 +78,13 @@ public class TrendActivity extends Fragment implements View.OnClickListener{
                 replaceFragment(messageFragment);
 
                 break;
+
+            case R.id.sendmood:
+                Intent intent = new Intent(getActivity(), SendCircle.class);
+                startActivity(intent);
+                break;
+
+
         }
     }
 
