@@ -59,7 +59,7 @@ public class FoundFragment extends Fragment {
                 searchFragment.setOnSearchClickListener(new IOnSearchClickListener() {
                     @Override
                     public void OnSearchClick(String keyword) {
-                        //这里处理逻辑
+                        //这里
 
                     }
                 });

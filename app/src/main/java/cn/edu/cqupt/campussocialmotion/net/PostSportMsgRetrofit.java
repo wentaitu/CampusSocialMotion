@@ -3,6 +3,8 @@ package cn.edu.cqupt.campussocialmotion.net;
 import cn.edu.cqupt.campussocialmotion.ApiService.ActivityGetService;
 import cn.edu.cqupt.campussocialmotion.ApiService.LoginService;
 import cn.edu.cqupt.campussocialmotion.model.Const;
+import okhttp3.OkHttpClient;
+import okhttp3.internal.connection.ConnectInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -18,8 +20,12 @@ public class PostSportMsgRetrofit {
     private ActivityGetService activityGetService;
 
     public PostSportMsgRetrofit() {
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .addInterceptor(new CodeInterceptor())
+                .build();
         retrofit = new Retrofit.Builder()
                 .baseUrl(Const.BASE_GET_ACTIVITY)
+                .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();

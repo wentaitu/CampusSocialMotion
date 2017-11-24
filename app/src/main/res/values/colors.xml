@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/tools">
     <color name="colorPrimary">#6F44CC</color>
-    <color name="colorPrimaryDark">#6374cc</color>
+    <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#FF4081</color>
 
     <color name="colorHint">#ffffff</color>
@@ -17,6 +17,12 @@
     <!-- 透明色-->
     <color name="trans_white">#88FFFFFF</color>
     <color name="trans_black">#88000000</color>
+
+    <color name="main_back">
+
+        #111111
+
+    </color>
 
     <color name="divide">#ffeeeeee</color>
     <color name="divide_line">#ffdddddd</color>

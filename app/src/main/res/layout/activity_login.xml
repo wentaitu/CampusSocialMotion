@@ -33,15 +33,15 @@
         <EditText
             android:id="@+id/login_id"
             android:layout_width="240dp"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_above="@+id/login_pwd"
             android:layout_alignStart="@+id/imageView"
             android:layout_gravity="center"
-            android:drawableLeft="@drawable/login1"
+            android:drawableLeft="@drawable/ic_account"
             android:drawablePadding="8dp"
             android:hint="@string/input_id"
             android:inputType="numberSigned"
-            android:textSize="20sp"/>
+            android:textSize="18sp"/>
 
         <View
             android:layout_width="match_parent"
@@ -50,16 +50,16 @@
         <EditText
             android:id="@+id/login_pwd"
             android:layout_width="240dp"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_above="@+id/login_btn"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:layout_marginBottom="12dp"
-            android:drawableLeft="@drawable/login2"
+            android:drawableLeft="@drawable/ic_password"
             android:drawablePadding="8dp"
             android:hint="@string/input_pwd"
             android:inputType="numberPassword"
-            android:textSize="20sp"/>
+            android:textSize="18sp"/>
 
         <View
             android:layout_width="match_parent"
@@ -79,7 +79,5 @@
             android:textSize="25sp"/>
 
     </LinearLayout>
-
-
 
 </LinearLayout>

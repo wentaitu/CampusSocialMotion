@@ -1,73 +1,335 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="cn.edu.cqupt.campussocialmotion.Activity.PutSportMsgActivity">
 
-    <EditText
-        android:id="@+id/activity_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="活动名称" />
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/activity_intro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="活动介绍" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="vertical"
+            android:background="@drawable/index_title_back">
 
-    <EditText
-        android:id="@+id/remarks"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="备注" />
+            <ImageView
+                android:id="@+id/back_post_activity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_back"
+                android:paddingLeft="5dp"/>
 
-    <EditText
-        android:id="@+id/location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="活动地点" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="活动发布"
+                android:layout_centerInParent="true"
+                android:textSize="20sp"
+                android:textColor="#ffffff"/>
 
-    <EditText
-        android:id="@+id/people_needs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:hint="需要人数"
-        android:ems="10"/>
+        </RelativeLayout>
 
-    <RadioButton
-        android:id="@+id/choose_activity"
-        android:layout_width="wrap_content"
-        android:layout_height="33dp"
-        android:layout_marginTop="8dp"
-        android:text="活动" />
 
-    <RadioButton
-        android:id="@+id/choose_competition"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="比赛" />
 
-    <Button
-        android:id="@+id/upload_msg"
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="发布"/>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_marginBottom="50dp">
 
-</LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="活动标题"
+                    android:textSize="17sp"
+                    android:textStyle="bold"/>
+
+                <EditText
+                    android:id="@+id/activity_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="6dp"
+                    android:layout_marginLeft="10dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="必填"
+                    android:background="@drawable/put_sport_text_back"
+                    android:textSize="17sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="活动人数"
+                    android:textStyle="bold"
+                    android:textSize="17sp"/>
+
+                <EditText
+                    android:id="@+id/people_needs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="6dp"
+                    android:layout_marginLeft="10dp"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:hint="必填"
+                    android:background="@drawable/put_sport_text_back"
+                    android:textSize="17sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="活动时间"
+                    android:textStyle="bold"
+                    android:textSize="17sp"/>
+
+                <EditText
+                    android:id="@+id/start_time"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="6dp"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:hint="开始时间"
+                    android:layout_marginRight="2dp"
+                    android:background="@drawable/put_sport_text_back" />
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="1dp"
+                    android:background="#CDC9C9"
+                    android:layout_gravity="center"
+                    />
+
+                <EditText
+                    android:id="@+id/end_time"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="6dp"
+                    android:layout_marginLeft="2dp"
+                    android:gravity="center"
+
+                    android:hint="结束时间"
+                    android:background="@drawable/put_sport_text_back" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="活动地点"
+                    android:textStyle="bold"
+                    android:textSize="17sp"/>
+
+                <EditText
+                    android:id="@+id/location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="6dp"
+                    android:layout_marginLeft="10dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="必填"
+                    android:background="@drawable/put_sport_text_back"
+                    android:textSize="17sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="活动内容"
+                    android:textStyle="bold"
+                    android:textSize="17sp" />
+
+                <EditText
+                    android:id="@+id/activity_intro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="6dp"
+                    android:layout_marginLeft="10dp"
+                    android:ems="10"
+                    android:hint="不超过200字"
+                    android:background="@drawable/put_sport_text_back"
+                    android:textSize="17sp"
+                    android:inputType="textMultiLine"
+                    android:minLines="8"
+                    android:maxLines="10"
+                    android:scrollbars="vertical"
+                    android:gravity="top"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="活动备注"
+                    android:textStyle="bold"
+                    android:textSize="17sp"/>
+
+                <EditText
+                    android:id="@+id/remarks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="6dp"
+                    android:layout_marginLeft="10dp"
+                    android:ems="10"
+                    android:background="@drawable/put_sport_text_back"
+                    android:textSize="17sp"
+                    android:inputType="textMultiLine"
+                    android:minLines="2"
+                    android:maxLines="3"
+                    android:scrollbars="vertical"
+                    android:gravity="top"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="活动海报"
+                    android:textStyle="bold"
+                    android:textSize="17sp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="10dp">
+
+                    <ImageView
+                        android:id="@+id/upload_photo"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:src="@drawable/ic_insert_photo"
+                        android:layout_gravity="center_horizontal"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="点击图片上传" />
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="发布类型"
+                        android:layout_marginTop="12dp"
+                        android:textStyle="bold"
+                        android:textSize="17sp"
+                        android:layout_marginRight="10dp"/>
+
+                    <RadioGroup
+                        android:id="@+id/choose_radiogroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp">
+
+                        <RadioButton
+                            android:id="@+id/choose_activity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="33dp"
+                            android:text="活动" />
+
+                        <RadioButton
+                            android:id="@+id/choose_competition"
+                            android:layout_width="wrap_content"
+                            android:layout_height="33dp"
+                            android:layout_marginLeft="15dp"
+                            android:text="比赛" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/upload_msg"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/index_title_back"
+        android:text="发布"
+        android:gravity="center"
+        android:layout_gravity="bottom"/>
+
+
+</android.support.design.widget.CoordinatorLayout>

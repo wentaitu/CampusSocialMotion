@@ -8,16 +8,22 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import org.zackratos.ultimatebar.UltimateBar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.edu.cqupt.campussocialmotion.R;
 import cn.edu.cqupt.campussocialmotion.fragment.FoundFragment;
 import cn.edu.cqupt.campussocialmotion.fragment.SettingFragment;
+import cn.edu.cqupt.campussocialmotion.fragment.SportFragment;
 import cn.edu.cqupt.campussocialmotion.model.RedrockApiWrapper;
 import cn.edu.cqupt.campussocialmotion.model.User;
 
@@ -40,15 +46,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (Build.VERSION.SDK_INT >= 21) {
-            View decorView = getWindow().getDecorView();
-            int option = View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-            decorView.setSystemUiVisibility(option);
-            getWindow().setNavigationBarColor(Color.TRANSPARENT);
-            getWindow().setStatusBarColor(Color.TRANSPARENT);
-        }
+
+        //UltimateBar ultimateBar = new UltimateBar(this);
+        //ultimateBar.setColorBar(ContextCompat.getColor(this, R.color.main_back));
+
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//        }
+//        if (Build.VERSION.SDK_INT >= 21) {
+//            View decorView = getWindow().getDecorView();
+//            int option = View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+//                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+//                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+//            decorView.setSystemUiVisibility(option);
+//            getWindow().setNavigationBarColor(Color.TRANSPARENT);
+//            getWindow().setStatusBarColor(Color.TRANSPARENT);
+//        }
 
         //SharedPreferences pref = getSharedPreferences("User",MODE_PRIVATE);
         //String pwd = pref.getString("pwd", "null");
@@ -62,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         nav_me.setOnClickListener(this);
         nav_add.setOnClickListener(this);
 
-        userinfo = (RedrockApiWrapper<User>) getIntent().getSerializableExtra("Userinfo");
+        //userinfo = (RedrockApiWrapper<User>) getIntent().getSerializableExtra("Userinfo");
 
         replaceFragment(new FoundFragment());
         nav_found.setImageResource(R.drawable.found_fill);
@@ -82,6 +96,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.exercise :
                 Toast.makeText(MainActivity.this, "运动", Toast.LENGTH_SHORT).show();
                 nav_exercise.setImageResource(R.drawable.exercise_fill);
+                replaceFragment(new SportFragment());
                 break;
 
             case R.id.circle :
@@ -89,8 +104,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 nav_circle.setImageResource(R.drawable.circle_fill);
                 TrendActivity trendActivity = new TrendActivity();
                 replaceFragment(trendActivity);
-                Intent intent = new Intent(MainActivity.this, TrendActivity.class);
-                startActivity(intent);
                 break;
 
             case R.id.me :
@@ -106,7 +119,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.add :
-                String stuId = userinfo.getData().getStuNum();
+                //String stuId = userinfo.getData().getStuNum();
+                String stuId = "2016214073";
                 Intent intent1 = new Intent(MainActivity.this, PutSportMsgActivity.class);
                 intent1.putExtra("stuId", stuId);
                 startActivity(intent1);

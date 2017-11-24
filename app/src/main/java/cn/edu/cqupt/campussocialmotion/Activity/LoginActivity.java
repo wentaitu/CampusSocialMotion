@@ -58,63 +58,65 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         }*/
         loginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
-                progressDialog.setMessage("Loading...");
-                progressDialog.setCancelable(false);
-                progressDialog.show();
+                                        @Override
+                                        public void onClick(View view) {
 
-                String id = loginId.getText().toString();
-                String pwd = loginPwd.getText().toString();
-                //String status =null;
+                                            final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
+                                            progressDialog.setMessage("Loading...");
+                                            progressDialog.setCancelable(false);
+                                            progressDialog.show();
+
+                                            String id = loginId.getText().toString();
+                                            String pwd = loginPwd.getText().toString();
+                                            //String status =null;
 
 
+                                            LoginRetrofit.getsInstance().getLoginService()
+                                                    .verify(id, pwd)
+                                                    .subscribeOn(Schedulers.io())
+                                                    .observeOn(AndroidSchedulers.mainThread())
+                                                    .subscribe(new Observer<User.UserWrapper>() {
+                                                        @Override
+                                                        public void onSubscribe(Disposable d) {
 
-                    LoginRetrofit.getsInstance().getLoginService()
-                            .verify(id, pwd)
-                            .subscribeOn(Schedulers.io())
-                            .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe(new Observer<User.UserWrapper>() {
-                                @Override
-                                public void onSubscribe(Disposable d) {
+                                                        }
 
-                                }
+                                                        @Override
+                                                        public void onNext(User.UserWrapper userWrapper) {
+                                                            progressDialog.dismiss();
+                                                            if (userWrapper.info.equals("success")) {
+                                                                Toast.makeText(LoginActivity.this, getResources().getString(R.string.login_succ), Toast.LENGTH_SHORT).show();
+                                                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                                                intent.putExtra("Userinfo", userWrapper);
 
-                                @Override
-                                public void onNext(User.UserWrapper userWrapper) {
-                                    progressDialog.dismiss();
-                                    if (userWrapper.info.equals("success")) {
-                                        Toast.makeText(LoginActivity.this, getResources().getString(R.string.login_succ), Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                        intent.putExtra("Userinfo", userWrapper);
+                                                                SharedPreferences.Editor editor = getSharedPreferences("User", MODE_PRIVATE).edit();
+                                                                editor.putString("status", userWrapper.info);
+                                                                editor.putString("stuNum", loginId.getText().toString());
+                                                                editor.putString("pwd", loginPwd.getText().toString());
+                                                                editor.putString("college", userWrapper.getData().college);
+                                                                editor.putString("gender", userWrapper.getData().gender);
+                                                                editor.apply();
+                                                                startActivity(intent);
+                                                                finish();
+                                                            } else {
+                                                                Toast.makeText(LoginActivity.this, getResources().getString(R.string.login_fail), Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        }
 
-                                        SharedPreferences.Editor editor = getSharedPreferences("User", MODE_PRIVATE).edit();
-                                        editor.putString("status", userWrapper.info);
-                                        editor.putString("stuNum",loginId.getText().toString());
-                                        editor.putString("pwd",loginPwd.getText().toString());
-                                        editor.putString("college",userWrapper.getData().college);
-                                        editor.putString("gender",userWrapper.getData().gender);
-                                        editor.apply();
-                                        startActivity(intent);
-                                        finish();
-                                    } else {
-                                        Toast.makeText(LoginActivity.this, getResources().getString(R.string.login_fail), Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                              
-                                @Override
-                                public void onComplete() {}
-                              
-                                @Override
-                                public void onError(Throwable e) {
-                                    Toast.makeText(LoginActivity.this, "Error!", Toast.LENGTH_LONG).show();
-                                    progressDialog.dismiss();
-                                }
+                                                        @Override
+                                                        public void onComplete() {
+                                                        }
 
-            }
-        });
+                                                        @Override
+                                                        public void onError(Throwable e) {
+                                                            Toast.makeText(LoginActivity.this, "Error!", Toast.LENGTH_LONG).show();
+                                                            progressDialog.dismiss();
+                                                        }
+                                                    });
+                                        }
 
-    }
+
+                                    });
+        }
 
 }

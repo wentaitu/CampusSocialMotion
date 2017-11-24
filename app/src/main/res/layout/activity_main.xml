@@ -2,13 +2,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clipChildren="false">
+    android:clipChildren="false"
+    android:fitsSystemWindows="true">
 
     <FrameLayout
         android:id="@+id/index"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/ll_bottom"/>
+        android:layout_above="@id/ll_bottom"
+        android:fitsSystemWindows="true"/>
 
     <LinearLayout
         android:id="@+id/ll_bottom"
@@ -20,18 +22,15 @@
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_gravity="bottom"
             android:layout_weight="1">
 
             <ImageView
                 android:id="@+id/found"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignStart="@+id/textView5"
+                android:paddingTop="12dp"
+                android:layout_centerHorizontal="true"
                 android:src="@drawable/found"/>
-                android:layout_centerInParent="true"/>
-
 
             <TextView
                 android:padding="2dp"
@@ -48,14 +47,13 @@
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_gravity="bottom"
             android:layout_weight="1">
 
             <ImageView
                 android:id="@+id/exercise"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
+                android:paddingTop="12dp"
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/exercise"/>
             <TextView
@@ -80,29 +78,20 @@
                 android:layout_height="70dp"
                 android:layout_centerInParent="true"
                 android:src="@drawable/add" />
-            <!--<TextView-->
-                <!--android:padding="2dp"-->
-                <!--android:textSize="10sp"-->
-                <!--android:layout_centerInParent="true"-->
-                <!--android:text="@string/nav_add"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_below="@+id/add"/>-->
 
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_gravity="bottom"
             android:layout_weight="1">
 
             <ImageView
                 android:id="@+id/circle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignStart="@+id/textView"
+                android:paddingTop="12dp"
+                android:layout_centerHorizontal="true"
                 android:src="@drawable/circle"/>
             <TextView
                 android:padding="2dp"
@@ -119,14 +108,13 @@
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_gravity="bottom"
             android:layout_weight="1">
 
             <ImageView
                 android:id="@+id/me"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
+                android:paddingTop="12dp"
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/me"/>
             <TextView
