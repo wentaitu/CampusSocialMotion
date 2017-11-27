@@ -228,7 +228,7 @@ public class PutSportMsgActivity extends AppCompatActivity {
 
                             @Override
                             public void onComplete() {
-                                finish();
+                                //finish();
                             }
                         });
             }

@@ -39,7 +39,8 @@ public class ActivityItemRecyclerAdapter extends RecyclerView.Adapter<ActivityIt
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Glide.with(context).load("http://106.14.188.228:8081/sports-dating/resources/activities/"
-                + String.valueOf(activits.get(position).getActivityId()) + activits.get(position).getActivityPic()).into(holder.activity);
+                + String.valueOf(activits.get(position).getActivityId()) + "/" + activits.get(position).getActivityPic()).into(holder.activity);
+        //Glide.with(context).load("http://106.14.188.228:8081/sports-dating/resources/activities/126/1511068318793IMG_20171110_105536.jpg").into(holder.activity);
         holder.name.setText(activits.get(position).getActivityName());
         holder.needs.setText(String.valueOf(activits.get(position).getPeopleNeeds()));
         holder.place.setText(activits.get(position).getLocation());

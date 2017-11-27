@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
-    <cn.edu.cqupt.campussocialmotion.View.TitleLayout
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
 
-    </cn.edu.cqupt.campussocialmotion.View.TitleLayout>
-    <ScrollView
+        <cn.edu.cqupt.campussocialmotion.View.TitleLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true">
+
+        </cn.edu.cqupt.campussocialmotion.View.TitleLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ebebeb"
-        android:scrollbars="none">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:background="#EBEBEB">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -229,15 +240,20 @@
                     android:src="@drawable/setting_icon" />
 
                 <TextView
+                    android:id="@+id/out"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="20dp"
                     android:layout_toRightOf="@+id/iv_setting5"
-                    android:text="11111111"
+                    android:text="退出登录"
                     android:textColor="#353535"
                     android:textSize="16sp" />
+
             </RelativeLayout>
+
         </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

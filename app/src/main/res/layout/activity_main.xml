@@ -1,22 +1,21 @@
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipChildren="false"
-    android:fitsSystemWindows="true">
+    android:orientation="vertical">
 
     <FrameLayout
         android:id="@+id/index"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/ll_bottom"
-        android:fitsSystemWindows="true"/>
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <LinearLayout
         android:id="@+id/ll_bottom"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
+
         android:orientation="horizontal"
         android:background="#ffffff">
         <RelativeLayout
@@ -130,4 +129,4 @@
 
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

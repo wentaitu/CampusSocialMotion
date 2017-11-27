@@ -15,20 +15,18 @@
         <activity
             android:name=".Activity.LoginActivity"
             android:theme="@style/FullTheme">
-
-        </activity>
-        <activity android:name=".Activity.MainActivity" >
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity android:name=".Activity.PutSportMsgActivity" />
-        <activity android:name=".fragment.ProfileActivity" />
-        <activity android:name=".Activity.ShowActivity"></activity>
+        <activity android:name=".Activity.MainActivity"/>
+        <activity android:name=".Activity.PutSportMsgActivity"/>
+        <activity android:name=".fragment.ProfileActivity"/>
+        <activity android:name=".Activity.ShowActivity"/>
+        <activity android:name=".Activity.SendCircle">
+        </activity>
     </application>
 
 </manifest>

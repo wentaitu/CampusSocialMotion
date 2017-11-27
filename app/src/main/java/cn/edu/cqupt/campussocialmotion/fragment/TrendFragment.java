@@ -1,5 +1,6 @@
-package cn.edu.cqupt.campussocialmotion.Activity;
+package cn.edu.cqupt.campussocialmotion.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,11 +12,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import cn.edu.cqupt.campussocialmotion.Activity.SendCircle;
 import cn.edu.cqupt.campussocialmotion.R;
 import cn.edu.cqupt.campussocialmotion.fragment.HotFragment;
 import cn.edu.cqupt.campussocialmotion.fragment.MessageFragment;
 
-public class TrendActivity extends Fragment implements View.OnClickListener{
+public class TrendFragment extends Fragment implements View.OnClickListener{
 
 
     private MessageFragment messageFragment;
@@ -29,19 +31,20 @@ public class TrendActivity extends Fragment implements View.OnClickListener{
 
     private TextView hotText;
     private ImageView good;
+    private ImageView sendmood;
 
     private FragmentManager fragmentManager;
     //@Override
    /* protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_trend);
+        setContentView(R.layout.fragment_trend);
         // 初始化布局元素
         initViews();
         replaceFragment(new HotFragment());
     }*/
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_trend, container, false);
+        View view = inflater.inflate(R.layout.fragment_trend, container, false);
 
         //initViews();
         replaceFragment(new HotFragment());
@@ -56,6 +59,8 @@ public class TrendActivity extends Fragment implements View.OnClickListener{
         messageText = (TextView) getView().findViewById(R.id.message_text);
         hotText = (TextView) getView().findViewById(R.id.contacts_text);
 
+        sendmood = getView().findViewById(R.id.sendmood);
+        sendmood.setOnClickListener(this);
         message.setOnClickListener(this);
         hot.setOnClickListener(this);
 
@@ -74,6 +79,13 @@ public class TrendActivity extends Fragment implements View.OnClickListener{
                 replaceFragment(messageFragment);
 
                 break;
+
+            case R.id.sendmood:
+                Intent intent = new Intent(getActivity(), SendCircle.class);
+                startActivity(intent);
+                break;
+
+
         }
     }
 

@@ -2,21 +2,15 @@ package cn.edu.cqupt.campussocialmotion.Activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
-
-import org.zackratos.ultimatebar.UltimateBar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,8 +18,15 @@ import cn.edu.cqupt.campussocialmotion.R;
 import cn.edu.cqupt.campussocialmotion.fragment.FoundFragment;
 import cn.edu.cqupt.campussocialmotion.fragment.SettingFragment;
 import cn.edu.cqupt.campussocialmotion.fragment.SportFragment;
+import cn.edu.cqupt.campussocialmotion.fragment.TrendFragment;
 import cn.edu.cqupt.campussocialmotion.model.RedrockApiWrapper;
 import cn.edu.cqupt.campussocialmotion.model.User;
+import cn.edu.cqupt.campussocialmotion.model.UserPost;
+import cn.edu.cqupt.campussocialmotion.net.PostUserInfoRetrofit;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -76,8 +77,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         nav_me.setOnClickListener(this);
         nav_add.setOnClickListener(this);
 
-        //userinfo = (RedrockApiWrapper<User>) getIntent().getSerializableExtra("Userinfo");
-
+        // FIXME: 17-11-24 userinfo获取异常
+        userinfo = (RedrockApiWrapper<User>) getIntent().getSerializableExtra("Userinfo");
         replaceFragment(new FoundFragment());
         nav_found.setImageResource(R.drawable.found_fill);
     }
@@ -94,15 +95,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.exercise :
+                replaceFragment(new SportFragment());
                 Toast.makeText(MainActivity.this, "运动", Toast.LENGTH_SHORT).show();
                 nav_exercise.setImageResource(R.drawable.exercise_fill);
-                replaceFragment(new SportFragment());
                 break;
 
             case R.id.circle :
                 Toast.makeText(MainActivity.this, "圈子", Toast.LENGTH_SHORT).show();
                 nav_circle.setImageResource(R.drawable.circle_fill);
-                TrendActivity trendActivity = new TrendActivity();
+                TrendFragment trendActivity = new TrendFragment();
                 replaceFragment(trendActivity);
                 break;
 
@@ -111,16 +112,55 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(MainActivity.this, "我的", Toast.LENGTH_SHORT).show();
                 nav_me.setImageResource(R.drawable.me_fill);
 
+                SharedPreferences pref = getSharedPreferences("User",MODE_PRIVATE);
+
+                final String id= pref.getString("stuNum","null");//2016210395
+                final String userName = pref.getString("name","null");
+                final String gender = pref.getString("gender","null");
+                final String password = pref.getString("pwd", "null");;
+                final int ability =1;
+
                 SettingFragment settingFragment = new SettingFragment();
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("Userinfo",userinfo);
+                bundle.putString("stuNum",id);
+                bundle.putString("name",userName);
                 settingFragment.setArguments(bundle);
                 replaceFragment(settingFragment);
+
+                PostUserInfoRetrofit.getsInstance().postUserInfoService()
+                        .getPostUserInfo(id, userName, gender, password, ability)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Observer<UserPost>() {
+                            @Override
+                            public void onSubscribe(Disposable d) {
+
+                            }
+
+                            @Override
+                            public void onNext(UserPost userInfo) {
+                                Toast.makeText(MainActivity.this, userInfo.getMessage(), Toast.LENGTH_LONG).show();
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+                                Toast.makeText(MainActivity.this,"ERROR!!!", Toast.LENGTH_SHORT).show();
+                                Log.d("ERROR", "ERROR");
+                                e.printStackTrace();
+                            }
+
+                            @Override
+                            public void onComplete() {
+
+                            }
+                        });
                 break;
 
             case R.id.add :
-                //String stuId = userinfo.getData().getStuNum();
-                String stuId = "2016214073";
+                // FIXME: 17-11-27
+                String stuId = "2016214073";  // 测试学号
+                //String stuId = String.valueOf(userinfo.getData().getStuNum());
                 Intent intent1 = new Intent(MainActivity.this, PutSportMsgActivity.class);
                 intent1.putExtra("stuId", stuId);
                 startActivity(intent1);

@@ -1,0 +1,102 @@
+[33mcommit 0c8ba18c94f2d638ba7bd888ef069a6a7a3fa4c6[m
+Author: qingtian <2893308643@qq.com>
+Date:   Fri Nov 24 21:07:33 2017 +0800
+
+    update xml...
+
+[33mcommit a941a8677de494d0d8b00fd54ee5116dcfc35cbf[m
+Merge: 4d48405 b066347
+Author: Rainy <2016214073@stu.cqupt.edu.cn>
+Date:   Thu Nov 16 12:14:09 2017 +0800
+
+    Merge pull request #3 from liye12/master
+    
+    3
+
+[33mcommit b06634726490d2b3926431c736675cf0ae7f66ad[m
+Merge: c1f41d9 4d48405
+Author: liye12 <30339171+liye12@users.noreply.github.com>
+Date:   Thu Nov 16 12:04:00 2017 +0800
+
+    Merge branch 'master' into master
+
+[33mcommit c1f41d9ab8b0e4013ce095f122a4ed7fa3eeb9f7[m
+Merge: e1ce843 4d48405
+Author: Rainy <2016214073@stu.cqupt.edu.cn>
+Date:   Wed Nov 15 21:37:51 2017 -0600
+
+    Merge branch 'master' into master
+
+[33mcommit e1ce8436eacb377bcd9d712a034cb6f7a13d6b3c[m
+Author: liye12 <18875078710@163.com>
+Date:   Thu Nov 16 11:03:03 2017 +0800
+
+    3
+    
+    3
+
+[33mcommit 4d484056b1016ebf8ffa2a90618a9c4f938f9174[m
+Author: qingtian <2893308643@qq.com>
+Date:   Wed Nov 15 21:24:49 2017 +0800
+
+    update UI
+
+[33mcommit dca92e8fa4a3182712d12821eaee2f7d4b60fa0d[m
+Author: qingtian <2893308643@qq.com>
+Date:   Wed Nov 15 11:41:10 2017 +0800
+
+    activitys add
+
+[33mcommit 1dc56b3013f8ce1ce838c50f2168a2270b36f436[m
+Author: qingtian <2893308643@qq.com>
+Date:   Sat Nov 11 22:08:38 2017 +0800
+
+    update index
+
+[33mcommit 7a07f2fc31ed842c30cdebee122ed3d2a58bd788[m
+Merge: 8583768 aa0aba0
+Author: qingtian <2893308643@qq.com>
+Date:   Tue Nov 7 21:44:28 2017 +0800
+
+    update
+
+[33mcommit 858376886d4d86ca4d37c573c0bd346f8e9dc920[m
+Author: qingtian <2893308643@qq.com>
+Date:   Tue Nov 7 19:48:54 2017 +0800
+
+    updata
+
+[33mcommit aa0aba0d0401526628237be67e5befa5544e18e4[m
+Merge: 1f6e2d3 c76efa0
+Author: Rainy <2016214073@stu.cqupt.edu.cn>
+Date:   Tue Nov 7 05:34:29 2017 -0600
+
+    Merge pull request #2 from liye12/master
+    
+    2.0
+
+[33mcommit c76efa06383a4a2186f7357e0f1193c09f1b5302[m
+Author: liye12 <18875078710@163.com>
+Date:   Mon Nov 6 00:41:59 2017 +0800
+
+    2
+    
+    2
+
+[33mcommit 1f6e2d3bb9932ed3d8c029d784bde3c469cf2761[m
+Author: qingtian <2893308643@qq.com>
+Date:   Mon Oct 30 07:26:16 2017 +0800
+
+    update README
+
+[33mcommit 2b5679f073633305388a8401cafe962df5a17488[m
+Author: qingtian <2893308643@qq.com>
+Date:   Mon Oct 30 07:21:30 2017 +0800
+
+    update README
+
+[33mcommit 89c573e2f285b6260d0837d3642568deba42520a[m
+Author: qingtian <2893308643@qq.com>
+Date:   Mon Oct 30 06:43:54 2017 +0800
+
+    init
