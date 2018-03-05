@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">CampusSocialMotion</string>
+    <string name="app_name">嘿咻运动</string>
     <string name="app_login">登　录</string>
     <string name="input_id">请输入学号</string>
     <string name="input_pwd">请输入身份证后六位</string>
     <string name="login_succ">登录成功</string>
-    <string name="login_fail">登录失败 请重新输入</string>
+    <string name="login_fail">用户名或密码错误 请重新输入</string>
 
     <string name="nav_found">发现</string>
     <string name="nav_exc">运动</string>

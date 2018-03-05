@@ -15,6 +15,7 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.edu.cqupt.campussocialmotion.R;
+import cn.edu.cqupt.campussocialmotion.View.ChoosePopupWindow;
 import cn.edu.cqupt.campussocialmotion.fragment.FoundFragment;
 import cn.edu.cqupt.campussocialmotion.fragment.SettingFragment;
 import cn.edu.cqupt.campussocialmotion.fragment.SportFragment;
@@ -88,32 +89,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         resetBottomBar();
         switch (view.getId()) {
             case R.id.found :
-
-                Toast.makeText(MainActivity.this, "发现", Toast.LENGTH_SHORT).show();
                 nav_found.setImageResource(R.drawable.found_fill);
                 replaceFragment(new FoundFragment());
                 break;
-
             case R.id.exercise :
-                replaceFragment(new SportFragment());
-                Toast.makeText(MainActivity.this, "运动", Toast.LENGTH_SHORT).show();
                 nav_exercise.setImageResource(R.drawable.exercise_fill);
+                replaceFragment(new SportFragment());
                 break;
-
             case R.id.circle :
-                Toast.makeText(MainActivity.this, "圈子", Toast.LENGTH_SHORT).show();
                 nav_circle.setImageResource(R.drawable.circle_fill);
                 TrendFragment trendActivity = new TrendFragment();
                 replaceFragment(trendActivity);
                 break;
 
             case R.id.me :
-
-                Toast.makeText(MainActivity.this, "我的", Toast.LENGTH_SHORT).show();
                 nav_me.setImageResource(R.drawable.me_fill);
 
                 SharedPreferences pref = getSharedPreferences("User",MODE_PRIVATE);
-
                 final String id= pref.getString("stuNum","null");//2016210395
                 final String userName = pref.getString("name","null");
                 final String gender = pref.getString("gender","null");
@@ -158,13 +150,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.add :
-                // FIXME: 17-11-27
-                String stuId = "2016214073";  // 测试学号
-                //String stuId = String.valueOf(userinfo.getData().getStuNum());
-                Intent intent1 = new Intent(MainActivity.this, PutSportMsgActivity.class);
-                intent1.putExtra("stuId", stuId);
-                startActivity(intent1);
-                Toast.makeText(MainActivity.this, "发布", Toast.LENGTH_SHORT).show();
+                ChoosePopupWindow mPopupWindow = new ChoosePopupWindow(MainActivity.this, new ChoosePopupWindow.OnPopWindowClickListener() {
+                    @Override
+                    public void onPopWindowClickListener(View view) {
+                        switch (view.getId()){
+                            case R.id.iv_push_photo:
+                                // FIXME: 17-11-27
+                                String stuId = "2016214073";  // 测试学号
+                                //String stuId = String.valueOf(userinfo.getData().getStuNum());
+                                Intent intent1 = new Intent(MainActivity.this, PutSportMsgActivity.class);
+                                intent1.putExtra("stuId", stuId);
+                                startActivity(intent1);
+                                break;
+                            case R.id.iv_push_resale:
+                                Intent intent2 = new Intent(MainActivity.this, OnlinewaitActivity.class);
+                                startActivity(intent2);
+                                break;
+                        }
+                    }
+                });
+                mPopupWindow.show();
                 break;
         }
     }

@@ -21,15 +21,15 @@
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1" >
 
             <ImageView
                 android:id="@+id/found"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="12dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/found"/>
+                android:src="@drawable/found" />
 
             <TextView
                 android:padding="2dp"
@@ -50,11 +50,12 @@
 
             <ImageView
                 android:id="@+id/exercise"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="12dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/exercise"/>
+                android:src="@drawable/exercise" />
+
             <TextView
                 android:padding="2dp"
                 android:textSize="10sp"
@@ -76,8 +77,8 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_centerInParent="true"
-                android:src="@drawable/add" />
-
+                android:src="@drawable/add"
+                android:layout_marginBottom="8dp" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -87,11 +88,12 @@
 
             <ImageView
                 android:id="@+id/circle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="12dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/circle"/>
+                android:src="@drawable/circle" />
+
             <TextView
                 android:padding="2dp"
                 android:textSize="10sp"
@@ -111,11 +113,12 @@
 
             <ImageView
                 android:id="@+id/me"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="12dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/me"/>
+                android:src="@drawable/me" />
+
             <TextView
                 android:padding="2dp"
                 android:textSize="10sp"

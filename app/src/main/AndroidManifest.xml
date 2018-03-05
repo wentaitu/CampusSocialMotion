@@ -3,7 +3,7 @@
     package="cn.edu.cqupt.campussocialmotion">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -21,12 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.MainActivity"/>
-        <activity android:name=".Activity.PutSportMsgActivity"/>
-        <activity android:name=".fragment.ProfileActivity"/>
-        <activity android:name=".Activity.ShowActivity"/>
-        <activity android:name=".Activity.SendCircle">
-        </activity>
+        <activity android:name=".Activity.MainActivity" />
+        <activity android:name=".Activity.PutSportMsgActivity" />
+        <activity android:name=".fragment.ProfileActivity" />
+        <activity android:name=".Activity.ShowActivity" />
+        <activity android:name=".Activity.SendCircle"></activity>
+        <activity android:name=".Activity.OnlinewaitActivity"></activity>
     </application>
 
 </manifest>
