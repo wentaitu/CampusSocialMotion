@@ -22,6 +22,10 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.okhttp.Request;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
+
 import org.feezu.liuli.timeselector.TimeSelector;
 
 import java.io.File;
@@ -31,6 +35,7 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.edu.cqupt.campussocialmotion.R;
+import cn.edu.cqupt.campussocialmotion.model.Const;
 import cn.edu.cqupt.campussocialmotion.model.SportPostMsg;
 import cn.edu.cqupt.campussocialmotion.net.PostSportMsgRetrofit;
 import cn.edu.cqupt.campussocialmotion.util.DateStringToTimeStamp;
@@ -54,40 +59,24 @@ public class PutSportMsgActivity extends AppCompatActivity {
     @BindView(R.id.choose_activity) public RadioButton chooseActivity;
     @BindView(R.id.choose_competition) public RadioButton chooseCompetition;
     @BindView(R.id.choose_radiogroup) public RadioGroup radioGroup;
-
     @BindView(R.id.upload_msg) public TextView uploadMsg;
-
     @BindView(R.id.start_time) public TextView startTime;
     @BindView(R.id.end_time) public  EditText endTime;
     @BindView(R.id.upload_photo) public ImageView uploadPhoto;
     @BindView(R.id.back_post_activity) public ImageView backActivity;
 
     public final static int REQUEST_IMAGE = 2;
-//    String activityName = name.getText().toString();
-//    int stuNum = Integer.valueOf(getIntent().getStringExtra("stuId"));
-//    String activityIntro = intro.getText().toString();
-//    String activityRemarks = remarks.getText().toString();
-//    long initTimeMi = System.currentTimeMillis();
-//    long startTimeMi = System.currentTimeMillis() + 6000000;
-//    long endTimeMi = System.currentTimeMillis() + 12000000;
-//    String activityLocation = location.getText().toString();
-//    int needsPeople = Integer.parseInt(needs.getText().toString());
-//    String isRace = "active";
 
     String activityName;
-    String stuNum;
+    String stuNum;           // 传入学号到Activity(待实现)
     String activityIntro;
     String activityRemarks;
-    long initTimeMi;
-    long startTimeMi;
-    long endTimeMi;
+    String startTimeStr;
+    String endTimeStr;
     String activityLocation;
-    int needsPeople;
+    String needsPeople;
     String isRace;
-    //RequestBody isRace;
-
     File pic;
-    //RequestBody requestBody;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,7 +114,8 @@ public class PutSportMsgActivity extends AppCompatActivity {
                     @Override
                     public void handle(String time) {
                         startTime.setText(time);
-                        startTimeMi = Long.valueOf(DateStringToTimeStamp.getTimeStamp(time));
+                        startTimeStr = time;
+                        // Long.valueOf(DateStringToTimeStamp.getTimeStamp(time));可将时间转换为毫秒
                     }
                 }, "2017-1-1 00:00", "2025-12-31 59:59");
                 timeSelector.setIsLoop(true);
@@ -141,7 +131,7 @@ public class PutSportMsgActivity extends AppCompatActivity {
                     @Override
                     public void handle(String time) {
                         endTime.setText(time);
-                        endTimeMi = Long.valueOf(DateStringToTimeStamp.getTimeStamp(time));
+                        endTimeStr = time;
                     }
                 }, "2017-1-1 00:00", "2025-12-31 59:59");
                 timeSelector.setIsLoop(true);
@@ -150,8 +140,8 @@ public class PutSportMsgActivity extends AppCompatActivity {
             }
         });
 
-
         radioGroup.setOnCheckedChangeListener(new RadioGroupListener());
+
         uploadMsg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -161,16 +151,51 @@ public class PutSportMsgActivity extends AppCompatActivity {
                 progressDialog.show();
 
                 activityName = name.getText().toString();
-                stuNum = getIntent().getStringExtra("stuId");
+                stuNum = getIntent().getStringExtra("stuId");      // 是否准确传入???
                 activityIntro = intro.getText().toString();
                 activityRemarks = remarks.getText().toString();
-                initTimeMi = System.currentTimeMillis();
-                activityLocation = location.getText().toString();
-                needsPeople = Integer.parseInt(needs.getText().toString());
+                activityLocation = location.getText().toString();         // 位置
+                needsPeople = needs.getText().toString();
 
-                RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), pic);
-                //requestBody = RequestBody.create(MediaType.parse("image/*"), pic);
-                 MultipartBody.Part photo = MultipartBody.Part.createFormData("image", pic.getName(), requestBody);
+                Map<String, String> actMsg = new HashMap<>();
+                actMsg.put("activityName",  activityName);
+                actMsg.put("initiator", stuNum);
+                actMsg.put("content", activityIntro);
+                actMsg.put("remarks",  activityRemarks);
+                actMsg.put("startTime", startTimeStr);
+                actMsg.put("endTime",  endTimeStr);
+                actMsg.put("location", activityLocation);
+                actMsg.put("peopleNeeds", needsPeople);
+                actMsg.put("activityOrRace",  isRace);
+                OkHttpUtils.post()
+                        .params(actMsg)
+                        .url(Const.BASE_GET_ACTIVITY + Const.POST_ACTIVITY)
+                        .addFile("file", "mypic.jpg", pic)        // 可扩展至多张图片即多个addFile(),1.2个参数???
+                        .build()
+                        .execute(new StringCallback() {
+                            @Override
+                            public void onError(Request request, Exception e) {
+                                progressDialog.dismiss();
+                                Toast.makeText(PutSportMsgActivity.this,"信息上传失败,请重试", Toast.LENGTH_LONG).show();
+                                e.printStackTrace();
+                            }
+
+                            @Override
+                            public void onResponse(String response) {
+                                progressDialog.dismiss();
+                                Toast.makeText(PutSportMsgActivity.this,"信息上传成功", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        });
+                //**************************************************************************************************************
+                // 代码废弃(暂时保留)
+                 //RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), pic);
+                 //RequestBody requestBody = RequestBody.create(MediaType.parse("application/octet-stream"), pic);
+                 //RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), pic);
+                 //Map<String, RequestBody> imgMap = new HashMap<>();
+                 //imgMap.put("file", requestBody);
+
+                 //MultipartBody.Part photo = MultipartBody.Part.createFormData("image", pic.getName(), requestBody);
 
 //                RequestBody activityName2 = RequestBody.create(MediaType.parse("multipart/form-data"), activityName);
 //                RequestBody stuNum2 = RequestBody.create(MediaType.parse("multipart/form-data"), stuNum);
@@ -183,54 +208,104 @@ public class PutSportMsgActivity extends AppCompatActivity {
 //                RequestBody needsPeople2 = RequestBody.create(MediaType.parse("multipart/form-data"), String.valueOf(needsPeople));
 //                RequestBody isRace2 = RequestBody.create(MediaType.parse("multipart/form-data"), activityName);
 
+                //***************************************************************************************************
+//                MediaType textType = MediaType.parse("text/plain");
+//                RequestBody activityName2 = RequestBody.create(textType, activityName);
+//                //RequestBody stuNum2 = RequestBody.create(MediaType.parse("multipart/form-data"), stuNum);
+//                RequestBody stuNum2 = RequestBody.create(textType, "2016214073");
+//                RequestBody activityIntro2 = RequestBody.create(textType, activityIntro);
+//                RequestBody activityRemarks2 = RequestBody.create(textType, activityRemarks);
+//                RequestBody startTime = RequestBody.create(textType, startTimeStr);
+//                RequestBody endTime  = RequestBody.create(textType, endTimeStr);
+//                RequestBody location = RequestBody.create(textType, activityLocation);
+//                RequestBody needsPeople2 = RequestBody.create(textType, String.valueOf(needsPeople));
+//                RequestBody isRace2 = RequestBody.create(textType, isRace);
+
+//                MediaType textType = MediaType.parse("text/plain");
+//                RequestBody activityName2 = RequestBody.create(textType, "jjj");
+//                //RequestBody stuNum2 = RequestBody.create(MediaType.parse("multipart/form-data"), stuNum);
+//                RequestBody stuNum2 = RequestBody.create(textType, "2016214073");
+//                RequestBody activityIntro2 = RequestBody.create(textType, "jjj");
+//                RequestBody activityRemarks2 = RequestBody.create(textType, "jjj");
+//                RequestBody startTime = RequestBody.create(textType, "2018-10-13 21:00");
+//                RequestBody endTime  = RequestBody.create(textType, "2018-10-13 23:00");
+//                RequestBody location = RequestBody.create(textType, "jjj");
+//                RequestBody needsPeople2 = RequestBody.create(textType, "12");
+//                RequestBody isRace2 = RequestBody.create(textType, "race");
+//
+//                Map<String, RequestBody> msg = new HashMap<>();
+//                msg.put("activityName", activityName2);
+//                msg.put("initiator", stuNum2);
+//                msg.put("content", activityIntro2);
+//                msg.put("remarks", activityRemarks2);
+//                msg.put("startTime", startTime);
+//                msg.put("endTime", endTime);
+//                msg.put("location", location);
+//                msg.put("peopleNeeds", needsPeople2);
+//                msg.put("activityOrRace", isRace2);
 
 
 //                @Part("activityName") String active, @Part("initiator") String stuNUm, @Part("content")String intro,
 ////                                             @Part("remarks")String remarks, @Part("initTime")long initTime, @Part("startTime")long startTime,
 ////                                             @Part("endTime")long endTime, @Part("location")String location, @Part("peopleNeeds")int needs,
 ////                                             @Part("activityOrRace")String activeOrRace, @Part MultipartBody.Part picture);
-                Map<String, RequestBody> map = new HashMap<>();
-                map.put("activityName", RequestBody.create(null, activityName));
-                map.put("initiator", RequestBody.create(null, "2015210054"));
-                map.put("content", RequestBody.create(null, activityIntro));
-                map.put("remarks", RequestBody.create(null, activityRemarks));
-                map.put("initTime", RequestBody.create(null, String.valueOf(initTimeMi)));
-                map.put("startTime", RequestBody.create(null, String.valueOf(startTimeMi)));
-                map.put("endTime", RequestBody.create(null, String.valueOf(endTimeMi)));
-                map.put("location", RequestBody.create(null, activityLocation));
-                map.put("peopleNeeds", RequestBody.create(null, String.valueOf(needsPeople)));
-                map.put("activityOrRace", RequestBody.create(null, isRace));
 
-                PostSportMsgRetrofit.getsInstance().postActivityService()
-//                        .getPostSportMsg(activityName2, stuNum2, activityIntro2, activityRemarks2,
-//                                initTimeMi2, startTimeMi2, endTimeMi2, activityLocation2, needsPeople2, isRace2, photo)
-                        .getPostSportMsg(map, photo)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new Observer<SportPostMsg>() {
-                            @Override
-                            public void onSubscribe(Disposable d) {
+//                Map<String, RequestBody> map = new HashMap<>();
+//                map.put("activityName", RequestBody.create(null, activityName));
+//                map.put("initiator", RequestBody.create(null, "2015210054"));
+//                map.put("content", RequestBody.create(null, activityIntro));
+//                map.put("remarks", RequestBody.create(null, activityRemarks));
+//                map.put("startTime", RequestBody.create(null, startTimeStr));
+//                map.put("endTime", RequestBody.create(null, endTimeStr));
+//                map.put("location", RequestBody.create(null, activityLocation));
+//                map.put("peopleNeeds", RequestBody.create(null, String.valueOf(needsPeople)));
+//                map.put("activityOrRace", RequestBody.create(null, isRace));
 
-                            }
 
-                            @Override
-                            public void onNext(SportPostMsg sportPostMsg) {
-                                progressDialog.dismiss();
-                                Toast.makeText(PutSportMsgActivity.this, sportPostMsg.getMessage(), Toast.LENGTH_LONG).show();
-                            }
+                // 测试
+//                Map<String, RequestBody> map = new HashMap<>();
+//                map.put("activityName", RequestBody.create(null, "jjj"));
+//                map.put("initiator", RequestBody.create(null, "2015210054"));
+//                map.put("content", RequestBody.create(null, "jjj"));
+//                map.put("remarks", RequestBody.create(null, "jjj"));
+//                map.put("startTime", RequestBody.create(null, "2018-10-13 21:00"));
+//                map.put("endTime", RequestBody.create(null, "2018-10-13 23:00"));
+//                map.put("location", RequestBody.create(null, "jjj"));
+//                map.put("peopleNeeds", RequestBody.create(null, "15"));
+//                map.put("activityOrRace", RequestBody.create(null, "race"));
 
-                            @Override
-                            public void onError(Throwable e) {
-                                Toast.makeText(PutSportMsgActivity.this,"ERROR!!!", Toast.LENGTH_SHORT).show();
-                                Log.d("ERROR", "ERROR");
-                                e.printStackTrace();
-                            }
-
-                            @Override
-                            public void onComplete() {
-                                //finish();
-                            }
-                        });
+                // 更换服务器,原Rxjava+Retrofit废弃 2018.3.20
+//                PostSportMsgRetrofit.getsInstance().postActivityService()
+//                        //.getPostSportMsg(activityName2, stuNum2, activityIntro2, activityRemarks2,
+//                         //       startTime, endTime, location, needsPeople2, isRace2, photo)
+//                        .getPostSportMsg(map, imgMap)
+//                        //.getPostSportMsg(msg, photo)
+//                        .subscribeOn(Schedulers.io())
+//                        .observeOn(AndroidSchedulers.mainThread())
+//                        .subscribe(new Observer<SportPostMsg>() {
+//                            @Override
+//                            public void onSubscribe(Disposable d) {
+//
+//                            }
+//
+//                            @Override
+//                            public void onNext(SportPostMsg sportPostMsg) {
+//                                progressDialog.dismiss();
+//                                Toast.makeText(PutSportMsgActivity.this, sportPostMsg.getMessage(), Toast.LENGTH_LONG).show();
+//                            }
+//
+//                            @Override
+//                            public void onError(Throwable e) {
+//                                Toast.makeText(PutSportMsgActivity.this,"ERROR!!!", Toast.LENGTH_SHORT).show();
+//                                progressDialog.dismiss();
+//                                e.printStackTrace();
+//                            }
+//
+//                            @Override
+//                            public void onComplete() {
+//                                //finish();
+//                            }
+//                        });
             }
         });
     }
@@ -267,7 +342,7 @@ public class PutSportMsgActivity extends AppCompatActivity {
             if (checkedId == chooseActivity.getId()){
                 //isRace = RequestBody.create(MediaType.parse("multipart/form-data"), "activity");
                 isRace = "activity";
-            }else if (checkedId == chooseCompetition.getId()){
+            }else if (checkedId == chooseCompetition.getId()) {
                 //isRace = RequestBody.create(MediaType.parse("multipart/form-data"), "race");
                 isRace = "race";
             }

@@ -44,15 +44,29 @@ public interface ActivityGetService {
 
 //    @Multipart
 //    @POST(Const.POST_ACTIVITY)
-//    Observable<SportPostMsg> getPostSportMsg(@Part("activityName") String active, @Part("initiator") String stuNUm, @Part("content")String intro,
-//                                             @Part("remarks")String remarks, @Part("initTime")long initTime, @Part("startTime")long startTime,
-//                                             @Part("endTime")long endTime, @Part("location")String location, @Part("peopleNeeds")int needs,
-//                                             @Part("activityOrRace")String activeOrRace, @Part MultipartBody.Part picture);
-//
+//    Observable<SportPostMsg> getPostSportMsg(@Part("activityName") String actName, @Part("initiator") String stuNUm, @Part("content")String intro,
+//                                             @Part("remarks")String remarks, @Part("startTime")String startTime,
+//                                             @Part("endTime")String endTime, @Part("location")String location, @Part("peopleNeeds")int needs,
+//                                             @Part("activityOrRace")String activeOrRace, @Part MultipartBody.Part file);
+
+//    @Multipart
+//    @POST(Const.POST_ACTIVITY)
+//    Observable<SportPostMsg> getPostSportMsg(@Part("activityName") RequestBody actName, @Part("initiator") RequestBody stuNUm, @Part("content")RequestBody intro,
+//                                             @Part("remarks")RequestBody remarks, @Part("startTime")RequestBody startTime,
+//                                             @Part("endTime")RequestBody endTime, @Part("location")RequestBody location, @Part("peopleNeeds")RequestBody needs,
+//                                             @Part("activityOrRace")RequestBody activeOrRace, @Part MultipartBody.Part file);
+
+//    @Multipart
+//    @POST(Const.POST_ACTIVITY)
+//    Observable<SportPostMsg> getPostSportMsg(@PartMap Map<String, RequestBody> msg, @Part MultipartBody.Part file);
 
     @Multipart
     @POST(Const.POST_ACTIVITY)
-    Observable<SportPostMsg> getPostSportMsg(@PartMap Map<String, RequestBody> map, @Part MultipartBody.Part picture);
+    Observable<SportPostMsg> getPostSportMsg(@PartMap Map<String, RequestBody> msg, @PartMap Map<String, RequestBody> imgs);
+
+//    @Multipart
+//    @POST(Const.POST_ACTIVITY)
+//    Observable<SportPostMsg> getPostSportMsg(@PartMap Map<String, RequestBody> map, @Part MultipartBody.Part file);
 
 
 

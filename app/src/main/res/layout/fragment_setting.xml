@@ -116,7 +116,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="20dp"
                     android:layout_toRightOf="@id/iv_setting1"
-                    android:text="11111111"
+                    android:text="我的运动团"
                     android:textColor="#353535"
                     android:textSize="16sp" />
 
@@ -154,7 +154,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="20dp"
                     android:layout_toRightOf="@id/iv_setting2"
-                    android:text="11111111"
+                    android:text="我的动态"
                     android:textColor="#353535"
                     android:textSize="16sp" />
             </RelativeLayout>
@@ -182,7 +182,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="20dp"
                     android:layout_toRightOf="@+id/iv_setting3"
-                    android:text="11111111"
+                    android:text="我参与的活动"
                     android:textColor="#353535"
                     android:textSize="16sp" />
 
@@ -212,7 +212,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="20dp"
                     android:layout_toRightOf="@+id/iv_setting4"
-                    android:text="11111111"
+                    android:text="我的小伙伴"
                     android:textColor="#353535"
                     android:textSize="16sp" />
                 <View

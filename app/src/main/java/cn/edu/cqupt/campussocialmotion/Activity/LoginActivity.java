@@ -82,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                 final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
                 progressDialog.setMessage("Loading...");
                 progressDialog.setCancelable(false);
-                progressDialog.show();
+                progressDialog.show();    // FIXME: 18-3-19 为何这里报错
 
                 final String id = loginId.getText().toString();
                 final String pwd = loginPwd.getText().toString();
@@ -184,9 +184,16 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this ,"密码错误", Toast.LENGTH_SHORT).show();
                             progressDialog.dismiss();
                         } else if (loginMsg.getMessage().equals("OK#成功返回")) {
+                            SharedPreferences.Editor editor = getSharedPreferences("User", MODE_PRIVATE).edit();
+                            editor.putInt("temp", 1);
+                            editor.putString("stuNum", String.valueOf(loginMsg.getBody().getId()));
+                            editor.putString("pwd", loginMsg.getBody().getPassword());
+                            editor.putString("name", loginMsg.getBody().getUserName());
+                            editor.putString("college", loginMsg.getBody().getCollege());
+                            editor.putString("gender", loginMsg.getBody().getGender());
+                            editor.apply();
                             Toast.makeText(LoginActivity.this, getResources().getString(R.string.login_succ), Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(intent);
+                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
                             finish();
                         }
                     }

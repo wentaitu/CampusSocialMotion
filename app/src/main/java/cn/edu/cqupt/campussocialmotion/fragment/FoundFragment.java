@@ -20,6 +20,7 @@ import com.wyt.searchbox.custom.IOnSearchClickListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.edu.cqupt.campussocialmotion.Activity.PlaygroundActivity;
 import cn.edu.cqupt.campussocialmotion.Activity.ShowActivity;
 import cn.edu.cqupt.campussocialmotion.R;
 import cn.edu.cqupt.campussocialmotion.adapter.PopActivityRecyclerAdapter;
@@ -32,7 +33,6 @@ import cn.edu.cqupt.campussocialmotion.adapter.PopCompetitionRecyclerAdapter;
 public class FoundFragment extends Fragment {
 
     private TextView searchShow;
-    private Button button;
     private BannerView banner;  // 最顶上轮播
     private int[] imgs = {R.drawable.banner1,R.drawable.banner2,R.drawable.banner1,R.drawable.banner2};
     private List<View> viewList;
@@ -41,7 +41,9 @@ public class FoundFragment extends Fragment {
 
     SearchFragment searchFragment = SearchFragment.newInstance();
 
+    // 四个按钮
     private ImageView showActivitys;
+    private ImageView showPlaygrounds;
 
 
     @Nullable
@@ -67,11 +69,19 @@ public class FoundFragment extends Fragment {
             }
         });
 
+        // 四个按钮:活动 赛事 运动团 运动场
         showActivitys = view.findViewById(R.id.show_activitys);
         showActivitys.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(), ShowActivity.class));
+            }
+        });
+        showPlaygrounds = view.findViewById(R.id.show_playgrounds);
+        showPlaygrounds.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), PlaygroundActivity.class));
             }
         });
 

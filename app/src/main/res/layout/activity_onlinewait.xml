@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="cn.edu.cqupt.campussocialmotion.Activity.OnlinewaitActivity">
 
     <com.skyfishjy.library.RippleBackground
@@ -11,7 +12,8 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="350dp"
+        android:layout_marginTop="50dp"
         app:rb_color="#0099CC"
         app:rb_radius="32dp"
         app:rb_rippleAmount="4"
@@ -25,4 +27,14 @@
             android:src="@drawable/circle_fill"/>
     </com.skyfishjy.library.RippleBackground>
 
-</LinearLayout>
+    <Button
+        android:background="@drawable/index_title_back"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="结束"
+        android:textSize="25sp"
+        android:textColor="#FFFFFF"
+        android:layout_gravity="bottom"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

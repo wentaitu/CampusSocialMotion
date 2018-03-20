@@ -6,21 +6,21 @@ package cn.edu.cqupt.campussocialmotion.model;
 
 public class SportPostMsg {
     /**
-     * code : 200
+     * statusCode : 200
      * message : OK#成功返回
-     * body : {"activityId":105,"activityName":"第14次测试","initiator":"2015210105","content":"能否传图片","remarks":"这是备注","initTime":1610771865254,"startTime":1510762874151,"endTime":1610771865254,"location":"中心食堂","peopleNeeds":22,"peopleHave":0,"activityPic":"1511059726816a.jpg","activityOrRace":"activity","clickNumber":0}
+     * body : {"activityId":140,"activityName":"乒乓球组队","initiator":"2016214073","content":"风雨操场乒乓球","remarks":"来人来人","initTime":1520515027000,"startTime":"2018-02-05 14:30","endTime":"2018-02-05 15:30","location":"风雨操场","peopleNeeds":1,"peopleHave":1,"activityPic":"2018-03-08_0.8850654977441016.JPG,2018-03-08_0.6010329986981587.JPG","activityOrRace":"activity","clickNumber":0}
      */
 
-    private int code;
+    private int statusCode;
     private String message;
     private BodyBean body;
 
-    public int getCode() {
-        return code;
+    public int getStatusCode() {
+        return statusCode;
     }
 
-    public void setCode(int code) {
-        this.code = code;
+    public void setStatusCode(int statusCode) {
+        this.statusCode = statusCode;
     }
 
     public String getMessage() {
@@ -41,18 +41,18 @@ public class SportPostMsg {
 
     public static class BodyBean {
         /**
-         * activityId : 105
-         * activityName : 第14次测试
-         * initiator : 2015210105
-         * content : 能否传图片
-         * remarks : 这是备注
-         * initTime : 1610771865254
-         * startTime : 1510762874151
-         * endTime : 1610771865254
-         * location : 中心食堂
-         * peopleNeeds : 22
-         * peopleHave : 0
-         * activityPic : 1511059726816a.jpg
+         * activityId : 140
+         * activityName : 乒乓球组队
+         * initiator : 2016214073
+         * content : 风雨操场乒乓球
+         * remarks : 来人来人
+         * initTime : 1520515027000
+         * startTime : 2018-02-05 14:30
+         * endTime : 2018-02-05 15:30
+         * location : 风雨操场
+         * peopleNeeds : 1
+         * peopleHave : 1
+         * activityPic : 2018-03-08_0.8850654977441016.JPG,2018-03-08_0.6010329986981587.JPG
          * activityOrRace : activity
          * clickNumber : 0
          */
@@ -63,8 +63,8 @@ public class SportPostMsg {
         private String content;
         private String remarks;
         private long initTime;
-        private long startTime;
-        private long endTime;
+        private String startTime;
+        private String endTime;
         private String location;
         private int peopleNeeds;
         private int peopleHave;
@@ -120,19 +120,19 @@ public class SportPostMsg {
             this.initTime = initTime;
         }
 
-        public long getStartTime() {
+        public String getStartTime() {
             return startTime;
         }
 
-        public void setStartTime(long startTime) {
+        public void setStartTime(String startTime) {
             this.startTime = startTime;
         }
 
-        public long getEndTime() {
+        public String getEndTime() {
             return endTime;
         }
 
-        public void setEndTime(long endTime) {
+        public void setEndTime(String endTime) {
             this.endTime = endTime;
         }
 

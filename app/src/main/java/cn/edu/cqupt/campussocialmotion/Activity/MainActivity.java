@@ -101,7 +101,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 TrendFragment trendActivity = new TrendFragment();
                 replaceFragment(trendActivity);
                 break;
-
             case R.id.me :
                 nav_me.setImageResource(R.drawable.me_fill);
 
@@ -155,7 +154,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     public void onPopWindowClickListener(View view) {
                         switch (view.getId()){
                             case R.id.iv_push_photo:
-                                // FIXME: 17-11-27
+                                // TODO: 18-3-20 获取学号信息,登录成功(首次,非首次)获取及存储方案
                                 String stuId = "2016214073";  // 测试学号
                                 //String stuId = String.valueOf(userinfo.getData().getStuNum());
                                 Intent intent1 = new Intent(MainActivity.this, PutSportMsgActivity.class);
