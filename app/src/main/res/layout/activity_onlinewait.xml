@@ -28,6 +28,7 @@
     </com.skyfishjy.library.RippleBackground>
 
     <Button
+        android:id="@+id/end_online"
         android:background="@drawable/index_title_back"
         android:layout_width="match_parent"
         android:layout_height="50dp"

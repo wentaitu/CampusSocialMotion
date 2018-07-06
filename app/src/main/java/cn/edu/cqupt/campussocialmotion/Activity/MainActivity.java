@@ -154,8 +154,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     public void onPopWindowClickListener(View view) {
                         switch (view.getId()){
                             case R.id.iv_push_photo:
-                                // TODO: 18-3-20 获取学号信息,登录成功(首次,非首次)获取及存储方案
-                                String stuId = "2016214073";  // 测试学号
+                                // 直接从SharedPreference中获取学号信息
+                                SharedPreferences pref = getSharedPreferences("User",MODE_PRIVATE);
+                                String stuId = pref.getString("stuNum","0000000000");
                                 //String stuId = String.valueOf(userinfo.getData().getStuNum());
                                 Intent intent1 = new Intent(MainActivity.this, PutSportMsgActivity.class);
                                 intent1.putExtra("stuId", stuId);

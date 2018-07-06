@@ -24,7 +24,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="12dp"
-            android:src="@drawable/default_avatar"/>
+            android:src="@mipmap/ic_launcher"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -70,6 +70,7 @@
             android:layout_toEndOf="@+id/tv_temp_name"
             android:ellipsize="end"
             android:gravity="right"
+            android:layout_marginRight="20dp"
             android:singleLine="true"
             android:text=""
             android:textColor="#AAAAAA"
@@ -111,6 +112,7 @@
             android:layout_toEndOf="@+id/tv_temp_xsid"
             android:ellipsize="end"
             android:gravity="right"
+            android:layout_marginRight="20dp"
             android:singleLine="true"
             android:text=""
             android:textColor="#AAAAAA"

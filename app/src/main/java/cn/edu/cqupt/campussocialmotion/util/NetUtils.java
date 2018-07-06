@@ -16,8 +16,11 @@ public class NetUtils{
             URL mURL = new URL(url);
             conn = (HttpURLConnection) mURL.openConnection();
             conn.setRequestMethod("GET");
-            conn.setReadTimeout(5000);
-            conn.setConnectTimeout(10000);
+//            conn.setReadTimeout(5000);
+//            conn.setConnectTimeout(10000);
+            // FIXME: 18-5-31 服务器挂,改
+            conn.setReadTimeout(500);
+            conn.setConnectTimeout(500);
 
             int responseCode = conn.getResponseCode();
             if (responseCode == 200) {

@@ -93,7 +93,8 @@ public class LoginActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         Gson gson = new Gson();
                         LoginFormAppServer loginMsg = gson.fromJson(response, LoginFormAppServer.class);
-                        if (loginMsg.getMessage().equals("ERROR#用户不存在")) {
+                        //if (loginMsg.getMessage().equals("ERROR#用户不存在")) { // 服务器挂,绕过
+                        if ("ERROR#用户不存在".equals("ERROR#用户不存在")) {
                             LoginRetrofit.getsInstance().getLoginService()
                                     .verify(id, pwd)
                                     .subscribeOn(Schedulers.io())

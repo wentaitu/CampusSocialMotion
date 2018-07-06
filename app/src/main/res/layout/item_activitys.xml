@@ -20,7 +20,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="36dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -31,22 +31,30 @@
                 app:civ_border_width="2dp"
                 app:civ_border_color="#ffffff"/>
 
-            <TextView
-                android:layout_marginLeft="5dp"
-                android:id="@+id/item_user_name"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:textSize="17sp"
-                android:text="小明"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_marginLeft="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:gravity="end"
-                android:text="发布活动"/>
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/item_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:textSize="15sp"
+                    android:textColor="#69cdc4"
+                    android:text="小明"/>
+
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:textSize="12sp"
+                    android:textColor="#B9C171"
+                    android:text="发布活动"/>
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
@@ -79,7 +87,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="活动人数"/>
+                    android:text="已报名人数"/>
 
                 <TextView
                     android:id="@+id/item_needpeo"
